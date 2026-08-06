@@ -451,3 +451,41 @@ border-radius:6px;
 background:#f3f4f6;
 
 }
+.about-content{
+
+    max-width:850px;
+
+    margin:40px auto 0;
+
+    text-align:left;
+
+}
+
+
+.about-content h3{
+
+    color:#0b3b82;
+
+    margin-bottom:20px;
+
+    font-size:26px;
+
+}
+
+
+.about-content p{
+
+    color:#555;
+
+    line-height:1.8;
+
+    margin-bottom:20px;
+
+}
+
+
+.remote-title{
+
+    margin-top:40px;
+
+}
