@@ -414,3 +414,45 @@ body {
         flex-direction: column;
     }
 }
+.faq{
+
+    background:#f8fafc;
+
+}
+
+
+.faq-item{
+
+    max-width:850px;
+
+    margin:25px auto;
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:10px;
+
+    text-align:left;
+
+    border:1px solid #e5e7eb;
+
+}
+
+
+.faq-item h3{
+
+    color:#0b3b82;
+
+    margin-bottom:12px;
+
+}
+
+
+.faq-item p{
+
+    color:#555;
+
+    line-height:1.7;
+
+}
