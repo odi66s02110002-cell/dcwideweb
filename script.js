@@ -7,3 +7,18 @@ window.addEventListener("scroll",()=>{
         nav.style.boxShadow="none";
     }
 });
+function toggleChat(){
+
+    const chat=document.getElementById("chatBox");
+
+    if(chat.style.display==="block"){
+
+        chat.style.display="none";
+
+    }else{
+
+        chat.style.display="block";
+
+    }
+
+}
