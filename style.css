@@ -330,24 +330,24 @@ body {
 }
 
 /* ==========================================
-   11. Portfolio Section (Enhanced)
+   11. Portfolio Section
    ========================================== */
 .portfolio-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 30px;
+    justify-content: center;
     margin-top: 50px;
 }
 
 .portfolio-card {
+    width: 100%;
+    max-width: 330px;
     background: white;
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid #e5e7eb;
-    text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -356,81 +356,84 @@ body {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
 
-.portfolio-header {
+.portfolio-image {
+    height: 150px;
     background: #0b3b82;
     color: white;
-    padding: 25px 25px 20px;
-}
-
-.client-tag {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #93c5fd;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 8px;
-}
-
-.portfolio-header h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 20px;
-    color: #ffffff;
-    line-height: 1.3;
+    font-weight: bold;
 }
 
 .portfolio-content {
     padding: 25px;
+    text-align: left;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    justify-content: space-between;
 }
 
-.project-summary {
-    color: #4b5563;
+.portfolio-content h3 {
+    margin-bottom: 12px;
+    color: #0b3b82;
+    font-size: 18px;
+}
+
+.portfolio-content p {
+    color: #555;
     line-height: 1.6;
-    font-size: 15px;
-    margin-bottom: 20px;
+    font-size: 14px;
+    margin-bottom: 15px;
 }
 
-.project-details {
-    background: #f8fafc;
-    padding: 15px;
-    border-radius: 8px;
-    border-left: 4px solid #2563eb;
+.portfolio-highlights {
+    list-style: none;
     margin-bottom: 20px;
+    padding-left: 0;
 }
 
-.detail-item {
+.portfolio-highlights li {
     font-size: 13px;
-    color: #374151;
+    color: #666;
     line-height: 1.5;
+    position: relative;
+    padding-left: 15px;
     margin-bottom: 6px;
 }
 
-.detail-item:last-child {
-    margin-bottom: 0;
+.portfolio-highlights li::before {
+    content: "•";
+    color: #2563eb;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
 }
 
-.detail-item strong {
-    color: #0b3b82;
-}
-
-.tech-tags {
+.portfolio-tags {
+    margin-top: auto;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
 }
 
-.tech-badge {
+.portfolio-tags span {
     display: inline-block;
-    padding: 5px 10px;
+    padding: 4px 10px;
     background: #eff6ff;
     color: #2563eb;
-    border: 1px solid #bfdbfe;
-    border-radius: 6px;
+    border-radius: 15px;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: bold;
+}
+
+/* 手機版適應 */
+@media (max-width: 768px) {
+    .portfolio-cards {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 /* RWD 適應 */
