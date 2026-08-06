@@ -546,3 +546,72 @@ body {
     line-height:1.7;
 
 }
+.process{
+
+    background:white;
+
+}
+
+
+
+.process-container{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+    margin-top:50px;
+
+}
+
+
+
+.process-step{
+
+    position:relative;
+
+    padding:30px;
+
+    background:#f8fafc;
+
+    border-radius:12px;
+
+    border:1px solid #e5e7eb;
+
+}
+
+
+
+.process-number{
+
+    font-size:36px;
+
+    font-weight:bold;
+
+    color:#2563eb;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.process-step h3{
+
+    color:#0b3b82;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.process-step p{
+
+    color:#555;
+
+    line-height:1.7;
+
+}
