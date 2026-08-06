@@ -154,18 +154,89 @@ body{
 
 
 .cards{
+
     display:flex;
+
     gap:30px;
+
     justify-content:center;
-    margin-top:40px;
+
+    margin-top:50px;
+
 }
 
 
+
 .card{
-    width:300px;
-    padding:30px;
-    border:1px solid #ddd;
-    border-radius:10px;
+
+    width:330px;
+
+    padding:35px 30px;
+
+    background:white;
+
+    border-radius:12px;
+
+    border:1px solid #e5e7eb;
+
+    text-align:left;
+
+    transition:.3s;
+
+}
+
+
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+}
+
+
+
+.icon{
+
+    font-size:38px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.card h3{
+
+    margin-bottom:15px;
+
+    color:#0b3b82;
+
+}
+
+
+
+.card p{
+
+    color:#555;
+
+    line-height:1.7;
+
+}
+
+
+
+.section-desc{
+
+    max-width:650px;
+
+    margin:20px auto 0;
+
+    color:#666;
+
+    line-height:1.6;
+
 }
 
 
@@ -195,7 +266,15 @@ footer{
 }
 
 
-@media(max-width:768px){
+@media.cards{
+    flex-direction:column;
+    align-items:center;
+}
+
+.card{
+    width:100%;
+    max-width:350px;
+}
 
 .navbar ul{
     display:none;
