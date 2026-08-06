@@ -44,22 +44,84 @@ body{
 
 .hero{
     height:100vh;
+
     background:
     linear-gradient(
-    rgba(0,0,0,.55),
-    rgba(0,0,0,.55)
-    ),
-    url("https://images.unsplash.com/photo-1498050108023-c5249f4df085");
-
-    background-size:cover;
-    background-position:center;
+        135deg,
+        #061a40 0%,
+        #0b3b82 50%,
+        #021024 100%
+    );
 
     display:flex;
     align-items:center;
     justify-content:center;
+
     text-align:center;
 
     color:white;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+
+/* subtle background effect */
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:600px;
+
+    height:600px;
+
+    background:rgba(37,99,235,.25);
+
+    border-radius:50%;
+
+    top:-200px;
+
+    right:-200px;
+
+}
+
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:900px;
+
+}
+
+
+.hero h1{
+
+    font-size:52px;
+
+    line-height:1.2;
+
+    margin-bottom:25px;
+
+}
+
+
+.hero p{
+
+    font-size:20px;
+
+    color:#dbeafe;
+
+    max-width:700px;
+
+    margin:0 auto 35px;
+
 }
 
 
