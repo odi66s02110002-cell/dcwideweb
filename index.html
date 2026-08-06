@@ -10,30 +10,30 @@
 <body>
 
     <!-- Chat Widget -->
-    <button class="chat-button" onclick="toggleChat()" aria-label="Open Chat">💬</button>
-
     <div class="chat-box" id="chatBox">
-        <div class="chat-header">
-            DC WIDEWEB Support
-            <span onclick="toggleChat()">&times;</span>
+    <div class="chat-header">
+        DC WIDEWEB Support
+        <span onclick="toggleChat()">&times;</span>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+        <div class="message bot">
+            Hello! 👋<br>Welcome to DC WIDEWEB CONSULTANCY. How can we help you today?
         </div>
 
-        <div class="chat-body">
-            <div class="message bot">
-                Hello! 👋<br>Welcome to DC WIDEWEB CONSULTANCY 
-            </div>
-
-            <div class="message bot">
-                How can we help you today?
-            </div>
-
-            <div class="quick-buttons">
-                <button type="button">Website Development</button>
-                <button type="button">WordPress Service</button>
-                <button type="button">Contact Sales</button>
-            </div>
+        <div class="quick-buttons" id="quickButtons">
+            <button type="button" onclick="sendUserMessage('Website Development')">Website Development</button>
+            <button type="button" onclick="sendUserMessage('WordPress Service')">WordPress Service</button>
+            <button type="button" onclick="sendUserMessage('Contact Sales')">Contact Sales</button>
         </div>
     </div>
+
+    <!-- 底部模擬輸入框 -->
+    <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="handleKeyPress(event)">
+        <button type="button" onclick="sendUserMessage()">Send</button>
+    </div>
+</div>
 
     <!-- Navigation -->
     <nav class="navbar">
