@@ -8,7 +8,15 @@
     <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
+<!-- 補上這一行：聊天開關按鈕 -->
+    <button class="chat-button" onclick="toggleChat()" aria-label="Open Chat">💬</button>
 
+    <!-- Chat Widget -->
+    <div class="chat-box" id="chatBox">
+        <div class="chat-header">
+            DC WIDEWEB Support
+            <span onclick="toggleChat()">&times;</span>
+        </div>
     <!-- Chat Widget -->
     <div class="chat-box" id="chatBox">
     <div class="chat-header">
