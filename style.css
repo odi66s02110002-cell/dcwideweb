@@ -471,7 +471,11 @@ body {
 
 }
 
+.why-cards{
 
+    grid-template-columns:1fr;
+
+}
 
 .why-cards{
 
