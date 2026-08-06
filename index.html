@@ -10,7 +10,7 @@
 <body>
 
     <!-- Chat Widget -->
-    <div class="chat-button" onclick="toggleChat()">💬</div>
+    <button class="chat-button" onclick="toggleChat()" aria-label="Open Chat">💬</button>
 
     <div class="chat-box" id="chatBox">
         <div class="chat-header">
@@ -28,9 +28,9 @@
             </div>
 
             <div class="quick-buttons">
-                <button>Website Development</button>
-                <button>WordPress Service</button>
-                <button>Contact Sales</button>
+                <button type="button">Website Development</button>
+                <button type="button">WordPress Service</button>
+                <button type="button">Contact Sales</button>
             </div>
         </div>
     </div>
@@ -48,476 +48,262 @@
         </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Professional Web Solutions For Modern Businesses</h1>
-            <p>We create professional websites, custom WordPress solutions, and reliable digital platforms for businesses worldwide.</p>
-            <a href="#contact" class="btn">Get Started</a>
-        </div>
-    </section>
-<p class="hero-note">
-Serving clients with professional web development solutions.
-</p>
-    <!-- Services Section -->
-    <section id="services" class="section services">
-        <h2>Our Services</h2>
-        <p class="section-desc">
-            We provide professional web development solutions to help businesses establish and grow their online presence.
-        </p>
-
-        <div class="cards">
-            <div class="card">
-                <div class="icon">🌐</div>
-                <h3>WordPress Development</h3>
-                <p>Custom WordPress websites, theme customization, business websites and performance optimization.</p>
+    <!-- Main Content Area -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Professional Web Solutions For Modern Businesses</h1>
+                <p>We create professional websites, custom WordPress solutions, and reliable digital platforms for businesses worldwide.</p>
+                <a href="#contact" class="btn">Get Started</a>
+                <p class="hero-note">
+                    Serving clients with professional web development solutions.
+                </p>
             </div>
+        </section>
 
-            <div class="card">
-                <div class="icon">⚙️</div>
-                <h3>PHP Development</h3>
-                <p>Reliable PHP-based solutions including backend systems, integrations and custom features.</p>
-            </div>
-
-            <div class="card">
-                <div class="icon">🔌</div>
-                <h3>Plugin Development</h3>
-                <p>Custom WordPress plugins and third-party service integrations designed for business needs.</p>
-            </div>
-        </div>
-    </section>
-<section id="why-us" class="section why-us">
-
-    <h2>
-        Why Choose Us
-    </h2>
-
-
-    <p class="section-desc">
-        We provide reliable web development solutions
-        focused on quality, flexibility and long-term support.
-    </p>
-
-
-    <div class="why-cards">
-
-
-        <div class="why-card">
-
-            <div class="why-icon">
-                💻
-            </div>
-
-            <h3>
-                Professional Web Development
-            </h3>
-
-            <p>
-                We create modern websites and custom solutions
-                designed for business needs.
+        <!-- Services Section -->
+        <section id="services" class="section services">
+            <h2>Our Services</h2>
+            <p class="section-desc">
+                We provide professional web development solutions to help businesses establish and grow their online presence.
             </p>
 
-        </div>
-
-
-
-        <div class="why-card">
-
-            <div class="why-icon">
-                📱
-            </div>
-
-            <h3>
-                Responsive Design
-            </h3>
-
-            <p>
-                Our websites are optimized for desktop,
-                tablet and mobile devices.
-            </p>
-
-        </div>
-
-
-
-        <div class="why-card">
-
-            <div class="why-icon">
-                🌎
-            </div>
-
-            <h3>
-                Remote Collaboration
-            </h3>
-
-            <p>
-                We support flexible remote cooperation
-                with clients worldwide.
-            </p>
-
-        </div>
-
-
-
-        <div class="why-card">
-
-            <div class="why-icon">
-                ⚙️
-            </div>
-
-            <h3>
-                Custom Solutions
-            </h3>
-
-            <p>
-                We develop customized features,
-                integrations and website improvements.
-            </p>
-
-        </div>
-
-
-
-        <div class="why-card">
-
-            <div class="why-icon">
-                🔒
-            </div>
-
-            <h3>
-                Reliable Support
-            </h3>
-
-            <p>
-                We focus on website stability,
-                maintenance and technical assistance.
-            </p>
-
-        </div>
-
-
-
-        <div class="why-card">
-
-            <div class="why-icon">
-                🚀
-            </div>
-
-            <h3>
-                Business Growth
-            </h3>
-
-            <p>
-                We help businesses build a stronger
-                online presence through technology.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-    <section id="process" class="section process">
-
-    <h2>
-        Our Development Process
-    </h2>
-
-
-    <p class="section-desc">
-        We follow a structured development process
-        to deliver reliable and efficient web solutions.
-    </p>
-
-
-    <div class="process-container">
-
-
-        <div class="process-step">
-
-            <div class="process-number">
-                01
-            </div>
-
-            <h3>
-                Requirement Analysis
-            </h3>
-
-            <p>
-                We understand your business goals,
-                project requirements and technical needs.
-            </p>
-
-        </div>
-
-
-
-        <div class="process-step">
-
-            <div class="process-number">
-                02
-            </div>
-
-            <h3>
-                Planning & Design
-            </h3>
-
-            <p>
-                We create project plans, website structure
-                and user-focused designs.
-            </p>
-
-        </div>
-
-
-
-        <div class="process-step">
-
-            <div class="process-number">
-                03
-            </div>
-
-            <h3>
-                Development
-            </h3>
-
-            <p>
-                Our team develops websites, custom features
-                and integrations based on requirements.
-            </p>
-
-        </div>
-
-
-
-        <div class="process-step">
-
-            <div class="process-number">
-                04
-            </div>
-
-            <h3>
-                Testing & Review
-            </h3>
-
-            <p>
-                We test functionality, compatibility
-                and website performance.
-            </p>
-
-        </div>
-
-
-
-        <div class="process-step">
-
-            <div class="process-number">
-                05
-            </div>
-
-            <h3>
-                Deployment
-            </h3>
-
-            <p>
-                We assist with website launch and
-                production environment setup.
-            </p>
-
-        </div>
-
-
-
-        <div class="process-step">
-
-            <div class="process-number">
-                06
-            </div>
-
-            <h3>
-                Maintenance Support
-            </h3>
-
-            <p>
-                We provide ongoing updates,
-                improvements and technical support.
-            </p>
-
-        </div>
-
-
-    </div>
-
-
-</section>
-    <section id="technology" class="section technology">
-
-    <h2>
-        Technologies We Work With
-    </h2>
-
-
-    <p class="section-desc">
-        We use modern and reliable technologies
-        to build professional web solutions.
-    </p>
-
-
-    <div class="tech-container">
-
-
-        <div class="tech-item">
-            <strong>WordPress</strong>
-            <span>
-                CMS Development
-            </span>
-        </div>
-
-
-        <div class="tech-item">
-            <strong>PHP</strong>
-            <span>
-                Backend Development
-            </span>
-        </div>
-
-
-        <div class="tech-item">
-            <strong>JavaScript</strong>
-            <span>
-                Interactive Features
-            </span>
-        </div>
-
-
-        <div class="tech-item">
-            <strong>HTML5</strong>
-            <span>
-                Modern Web Structure
-            </span>
-        </div>
-
-
-        <div class="tech-item">
-            <strong>CSS3</strong>
-            <span>
-                Responsive Design
-            </span>
-        </div>
-
-
-        <div class="tech-item">
-            <strong>MySQL</strong>
-            <span>
-                Database Solutions
-            </span>
-        </div>
-
-
-        <div class="tech-item">
-            <strong>Git</strong>
-            <span>
-                Version Control
-            </span>
-        </div>
-
-
-        <div class="tech-item">
-            <strong>Cloudflare</strong>
-            <span>
-                Security & Performance
-            </span>
-        </div>
-
-
-    </div>
-
-
-</section>
-    <!-- About Section -->
-    <section id="about" class="section about">
-        <h2>About Us</h2>
-        <div class="about-content">
-            <h3>DC WIDEWEB CONSULTANCY INC.</h3>
-            <p>
-                DC WIDEWEB CONSULTANCY INC. is a professional web development company specializing in WordPress development, PHP solutions, and custom web applications.
-            </p>
-            <p>
-                We help businesses build reliable, secure and scalable digital platforms through modern web technologies and customized development solutions.
-            </p>
-
-            <h3 class="remote-title">Remote Development Team</h3>
-            <p>
-                Our remote development team provides flexible and efficient technical support for businesses worldwide. Through remote collaboration and modern development workflows, we deliver high-quality web solutions regardless of location.
-            </p>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="section portfolio">
-        <h2>Our Portfolio</h2>
-        <p class="section-desc">Selected examples of our web development solutions and custom digital projects.</p>
-
-        <div class="portfolio-cards">
-            <div class="portfolio-card">
-                <div class="portfolio-image">Business Website</div>
-                <div class="portfolio-content">
-                    <h3>Corporate Business Website</h3>
-                    <p>A professional company website developed with responsive design, optimized performance and modern user experience.</p>
-                    <span>WordPress Development</span>
+            <div class="cards">
+                <div class="card">
+                    <div class="icon">🌐</div>
+                    <h3>WordPress Development</h3>
+                    <p>Custom WordPress websites, theme customization, business websites and performance optimization.</p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">⚙️</div>
+                    <h3>PHP Development</h3>
+                    <p>Reliable PHP-based solutions including backend systems, integrations and custom features.</p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">🔌</div>
+                    <h3>Plugin Development</h3>
+                    <p>Custom WordPress plugins and third-party service integrations designed for business needs.</p>
                 </div>
             </div>
+        </section>
 
-            <div class="portfolio-card">
-                <div class="portfolio-image">WordPress Project</div>
-                <div class="portfolio-content">
-                    <h3>WordPress Business Platform</h3>
-                    <p>A customized WordPress solution including theme customization, content management and business functionality.</p>
-                    <span>WordPress / PHP</span>
+        <!-- Why Choose Us -->
+        <section id="why-us" class="section why-us">
+            <h2>Why Choose Us</h2>
+            <p class="section-desc">
+                We provide reliable web development solutions focused on quality, flexibility and long-term support.
+            </p>
+
+            <div class="why-cards">
+                <div class="why-card">
+                    <div class="why-icon">💻</div>
+                    <h3>Professional Web Development</h3>
+                    <p>We create modern websites and custom solutions designed for business needs.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="why-icon">📱</div>
+                    <h3>Responsive Design</h3>
+                    <p>Our websites are optimized for desktop, tablet and mobile devices.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="why-icon">🌎</div>
+                    <h3>Remote Collaboration</h3>
+                    <p>We support flexible remote cooperation with clients worldwide.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="why-icon">⚙️</div>
+                    <h3>Custom Solutions</h3>
+                    <p>We develop customized features, integrations and website improvements.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="why-icon">🔒</div>
+                    <h3>Reliable Support</h3>
+                    <p>We focus on website stability, maintenance and technical assistance.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="why-icon">🚀</div>
+                    <h3>Business Growth</h3>
+                    <p>We help businesses build a stronger online presence through technology.</p>
                 </div>
             </div>
+        </section>
 
-            <div class="portfolio-card">
-                <div class="portfolio-image">Custom Plugin</div>
-                <div class="portfolio-content">
-                    <h3>Custom Plugin Development</h3>
-                    <p>A tailored WordPress plugin developed to improve workflow automation and integrate external services.</p>
-                    <span>Plugin Development</span>
+        <!-- Process Section -->
+        <section id="process" class="section process">
+            <h2>Our Development Process</h2>
+            <p class="section-desc">
+                We follow a structured development process to deliver reliable and efficient web solutions.
+            </p>
+
+            <div class="process-container">
+                <div class="process-step">
+                    <div class="process-number">01</div>
+                    <h3>Requirement Analysis</h3>
+                    <p>We understand your business goals, project requirements and technical needs.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-number">02</div>
+                    <h3>Planning & Design</h3>
+                    <p>We create project plans, website structure and user-focused designs.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-number">03</div>
+                    <h3>Development</h3>
+                    <p>Our team develops websites, custom features and integrations based on requirements.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-number">04</div>
+                    <h3>Testing & Review</h3>
+                    <p>We test functionality, compatibility and website performance.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-number">05</div>
+                    <h3>Deployment</h3>
+                    <p>We assist with website launch and production environment setup.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-number">06</div>
+                    <h3>Maintenance Support</h3>
+                    <p>We provide ongoing updates, improvements and technical support.</p>
                 </div>
             </div>
-        </div>
-    </section>
-<section id="faq" class="section faq">
+        </section>
 
-    <h2>Frequently Asked Questions</h2>
+        <!-- Technology Section -->
+        <section id="technology" class="section technology">
+            <h2>Technologies We Work With</h2>
+            <p class="section-desc">
+                We use modern and reliable technologies to build professional web solutions.
+            </p>
 
-    <div class="faq-item">
-        <h3>Do you develop custom WordPress websites?</h3>
-        <p>Yes. We build responsive WordPress websites tailored to business requirements and branding.</p>
-    </div>
+            <div class="tech-container">
+                <div class="tech-item">
+                    <strong>WordPress</strong>
+                    <span>CMS Development</span>
+                </div>
+                <div class="tech-item">
+                    <strong>PHP</strong>
+                    <span>Backend Development</span>
+                </div>
+                <div class="tech-item">
+                    <strong>JavaScript</strong>
+                    <span>Interactive Features</span>
+                </div>
+                <div class="tech-item">
+                    <strong>HTML5</strong>
+                    <span>Modern Web Structure</span>
+                </div>
+                <div class="tech-item">
+                    <strong>CSS3</strong>
+                    <span>Responsive Design</span>
+                </div>
+                <div class="tech-item">
+                    <strong>MySQL</strong>
+                    <span>Database Solutions</span>
+                </div>
+                <div class="tech-item">
+                    <strong>Git</strong>
+                    <span>Version Control</span>
+                </div>
+                <div class="tech-item">
+                    <strong>Cloudflare</strong>
+                    <span>Security & Performance</span>
+                </div>
+            </div>
+        </section>
 
-    <div class="faq-item">
-        <h3>Do you provide PHP development?</h3>
-        <p>Yes. We develop and maintain PHP-based applications, backend systems and custom functionality.</p>
-    </div>
+        <!-- About Section -->
+        <section id="about" class="section about">
+            <h2>About Us</h2>
+            <div class="about-content">
+                <h3>DC WIDEWEB CONSULTANCY INC.</h3>
+                <p>DC WIDEWEB CONSULTANCY INC. is a professional web development company specializing in WordPress development, PHP solutions, and custom web applications.</p>
+                <p>We help businesses build reliable, secure and scalable digital platforms through modern web technologies and customized development solutions.</p>
 
-    <div class="faq-item">
-        <h3>Can your team work remotely?</h3>
-        <p>Yes. Our development team collaborates remotely with clients using modern communication and project management tools.</p>
-    </div>
+                <h3 class="remote-title">Remote Development Team</h3>
+                <p>Our remote development team provides flexible and efficient technical support for businesses worldwide. Through remote collaboration and modern development workflows, we deliver high-quality web solutions regardless of location.</p>
+            </div>
+        </section>
 
-    <div class="faq-item">
-        <h3>Do you offer website maintenance?</h3>
-        <p>Yes. We provide ongoing maintenance, security updates and technical support after project delivery.</p>
-    </div>
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section portfolio">
+            <h2>Our Portfolio</h2>
+            <p class="section-desc">Selected examples of our web development solutions and custom digital projects.</p>
 
-</section>
-    <!-- Contact CTA Section -->
-    <section id="contact" class="cta">
-        <h2>Ready to Build Your Website?</h2>
-        <a href="mailto:info@dcwideweb.online" class="btn">Contact Us</a>
-    </section>
+            <div class="portfolio-cards">
+                <div class="portfolio-card">
+                    <div class="portfolio-image">Business Website</div>
+                    <div class="portfolio-content">
+                        <h3>Corporate Business Website</h3>
+                        <p>A professional company website developed with responsive design, optimized performance and modern user experience.</p>
+                        <span>WordPress Development</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">WordPress Project</div>
+                    <div class="portfolio-content">
+                        <h3>WordPress Business Platform</h3>
+                        <p>A customized WordPress solution including theme customization, content management and business functionality.</p>
+                        <span>WordPress / PHP</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">Custom Plugin</div>
+                    <div class="portfolio-content">
+                        <h3>Custom Plugin Development</h3>
+                        <p>A tailored WordPress plugin developed to improve workflow automation and integrate external services.</p>
+                        <span>Plugin Development</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section faq">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h3>Do you develop custom WordPress websites?</h3>
+                <p>Yes. We build responsive WordPress websites tailored to business requirements and branding.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Do you provide PHP development?</h3>
+                <p>Yes. We develop and maintain PHP-based applications, backend systems and custom functionality.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can your team work remotely?</h3>
+                <p>Yes. Our development team collaborates remotely with clients using modern communication and project management tools.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Do you offer website maintenance?</h3>
+                <p>Yes. We provide ongoing maintenance, security updates and technical support after project delivery.</p>
+            </div>
+        </section>
+
+        <!-- Contact CTA Section -->
+        <section id="contact" class="cta">
+            <h2>Ready to Build Your Website?</h2>
+            <a href="mailto:info@dcwideweb.online" class="btn">Contact Us</a>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -530,23 +316,15 @@ Serving clients with professional web development solutions.
             <div class="footer-contact">
                 <h4>Contact</h4>
                 <p>Email: <a href="mailto:info@dcwideweb.online">info@dcwideweb.online</a></p>
-                Website:
-        <a href="https://dcwideweb.online">
-            dcwideweb.online
-        </a>
-    </p>
-
-    <p>
-        Business Hours:<br>
-        Monday – Friday<br>
-        9:00 AM – 6:00 PM (GMT+8)
-    </p>
-
-    <p>
-        Remote Services Available Worldwide
-    </p>
-
-</div>
+                <p>Website: <a href="https://dcwideweb.online">dcwideweb.online</a></p>
+                <p>
+                    Business Hours:<br>
+                    Monday – Friday<br>
+                    9:00 AM – 6:00 PM (GMT+8)
+                </p>
+                <p>Remote Services Available Worldwide</p>
+            </div>
+        </div>
 
         <div class="footer-bottom">
             <p>© 2026 DC WIDEWEB CONSULTANCY INC. All Rights Reserved.</p>
