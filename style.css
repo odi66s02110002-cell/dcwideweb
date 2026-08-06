@@ -266,11 +266,23 @@ footer{
 }
 
 
-@media.cards{
+@media(max-width:768px){
+.portfolio-cards{
+
     flex-direction:column;
+
     align-items:center;
+
 }
 
+
+.portfolio-card{
+
+    width:100%;
+
+    max-width:350px;
+
+}
 .card{
     width:100%;
     max-width:350px;
