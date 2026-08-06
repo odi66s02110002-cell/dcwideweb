@@ -465,3 +465,80 @@ body {
     color:#cbd5e1;
 
 }
+.why-us{
+
+    background:#f8fafc;
+
+}
+
+
+
+.why-cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+    margin-top:50px;
+
+}
+
+
+
+.why-card{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:12px;
+
+    border:1px solid #e5e7eb;
+
+    text-align:left;
+
+    transition:.3s;
+
+}
+
+
+
+.why-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.1);
+
+}
+
+
+
+.why-icon{
+
+    font-size:36px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.why-card h3{
+
+    color:#0b3b82;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.why-card p{
+
+    color:#555;
+
+    line-height:1.7;
+
+}
