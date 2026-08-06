@@ -330,22 +330,24 @@ body {
 }
 
 /* ==========================================
-   11. Portfolio Section
+   11. Portfolio Section (Enhanced)
    ========================================== */
 .portfolio-cards {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    justify-content: center;
     margin-top: 50px;
 }
 
 .portfolio-card {
-    width: 100%;
-    max-width: 330px;
     background: white;
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid #e5e7eb;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -354,40 +356,88 @@ body {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
 
-.portfolio-image {
-    height: 150px;
+.portfolio-header {
     background: #0b3b82;
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
+    padding: 25px 25px 20px;
+}
+
+.client-tag {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #93c5fd;
     font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.portfolio-header h3 {
+    font-size: 20px;
+    color: #ffffff;
+    line-height: 1.3;
 }
 
 .portfolio-content {
     padding: 25px;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
 }
 
-.portfolio-content h3 {
-    margin-bottom: 15px;
-    color: #0b3b82;
-}
-
-.portfolio-content p {
-    color: #555;
-    line-height: 1.7;
+.project-summary {
+    color: #4b5563;
+    line-height: 1.6;
+    font-size: 15px;
     margin-bottom: 20px;
 }
 
-.portfolio-content span {
+.project-details {
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #2563eb;
+    margin-bottom: 20px;
+}
+
+.detail-item {
+    font-size: 13px;
+    color: #374151;
+    line-height: 1.5;
+    margin-bottom: 6px;
+}
+
+.detail-item:last-child {
+    margin-bottom: 0;
+}
+
+.detail-item strong {
+    color: #0b3b82;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-badge {
     display: inline-block;
-    padding: 6px 12px;
+    padding: 5px 10px;
     background: #eff6ff;
     color: #2563eb;
-    border-radius: 20px;
-    font-size: 13px;
+    border: 1px solid #bfdbfe;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* RWD 適應 */
+@media (max-width: 992px) {
+    .portfolio-cards {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ==========================================
