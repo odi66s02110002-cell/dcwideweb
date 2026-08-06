@@ -600,7 +600,66 @@ body {
 .quick-buttons button:hover {
     background: #f3f4f6;
 }
+/* 聊天對話區域滾動設定 */
+.chat-body {
+    padding: 15px;
+    max-height: 280px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
+/* 使用者發送的訊息（右側藍底） */
+.message.user {
+    background: #2563eb;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+    max-width: 80%;
+}
+
+/* 客服機器人回覆（左側灰底） */
+.message.bot {
+    background: #f1f5f9;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+    max-width: 85%;
+    line-height: 1.5;
+}
+
+/* 底部輸入區域 */
+.chat-input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #e5e7eb;
+    background: #fff;
+}
+
+.chat-input-area input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    font-size: 13px;
+}
+
+.chat-input-area button {
+    margin-left: 6px;
+    padding: 8px 12px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.chat-input-area button:hover {
+    background: #1d4ed8;
+}
 /* ==========================================
    15. Media Queries (Mobile Responsive)
    ========================================== */
