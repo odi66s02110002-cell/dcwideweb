@@ -46,7 +46,7 @@ body {
 }
 
 .logo img {
-    height: 40px; /* Adjusted from broken 8px value for proper display */
+    height: 60px; /* Adjusted from broken 8px value for proper display */
     width: auto;
 }
 
