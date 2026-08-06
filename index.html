@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
-<!-- 補上這一行：聊天開關按鈕 -->
+
+    <!-- 聊天浮標按鈕 -->
     <button class="chat-button" onclick="toggleChat()" aria-label="Open Chat">💬</button>
 
     <!-- Chat Widget -->
@@ -17,31 +18,25 @@
             DC WIDEWEB Support
             <span onclick="toggleChat()">&times;</span>
         </div>
-    <!-- Chat Widget -->
-    <div class="chat-box" id="chatBox">
-    <div class="chat-header">
-        DC WIDEWEB Support
-        <span onclick="toggleChat()">&times;</span>
-    </div>
 
-    <div class="chat-body" id="chatBody">
-        <div class="message bot">
-            Hello! 👋<br>Welcome to DC WIDEWEB CONSULTANCY. How can we help you today?
+        <div class="chat-body" id="chatBody">
+            <div class="message bot">
+                Hello! 👋<br>Welcome to DC WIDEWEB CONSULTANCY. How can we help you today?
+            </div>
+
+            <div class="quick-buttons" id="quickButtons">
+                <button type="button" onclick="sendUserMessage('Website Development')">Website Development</button>
+                <button type="button" onclick="sendUserMessage('WordPress Service')">WordPress Service</button>
+                <button type="button" onclick="sendUserMessage('Contact Sales')">Contact Sales</button>
+            </div>
         </div>
 
-        <div class="quick-buttons" id="quickButtons">
-            <button type="button" onclick="sendUserMessage('Website Development')">Website Development</button>
-            <button type="button" onclick="sendUserMessage('WordPress Service')">WordPress Service</button>
-            <button type="button" onclick="sendUserMessage('Contact Sales')">Contact Sales</button>
+        <!-- 底部模擬輸入框 -->
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="handleKeyPress(event)">
+            <button type="button" onclick="sendUserMessage()">Send</button>
         </div>
     </div>
-
-    <!-- 底部模擬輸入框 -->
-    <div class="chat-input-area">
-        <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="handleKeyPress(event)">
-        <button type="button" onclick="sendUserMessage()">Send</button>
-    </div>
-</div>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -247,66 +242,66 @@
         </section>
 
         <!-- Portfolio Section -->
-<section id="portfolio" class="section portfolio">
-    <h2>Our Portfolio</h2>
-    <p class="section-desc">Selected examples of custom websites, performance upgrades, and tailored business solutions we have delivered.</p>
+        <section id="portfolio" class="section portfolio">
+            <h2>Our Portfolio</h2>
+            <p class="section-desc">Selected examples of custom websites, performance upgrades, and tailored business solutions we have delivered.</p>
 
-    <div class="portfolio-cards">
-        <!-- Project 1 -->
-        <div class="portfolio-card">
-            <div class="portfolio-image">Logistics Portal</div>
-            <div class="portfolio-content">
-                <h3>International Logistics Website</h3>
-                <p>A multilingual corporate website developed for a regional freight operator, featuring custom route inquiries and performance optimization.</p>
-                <ul class="portfolio-highlights">
-                    <li>Optimized page load speed & multi-region contact routing</li>
-                    <li>Built with WPML multi-language integration</li>
-                </ul>
-                <div class="portfolio-tags">
-                    <span>WordPress</span>
-                    <span>PHP</span>
-                    <span>Cloudflare</span>
+            <div class="portfolio-cards">
+                <!-- Project 1 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">Logistics Portal</div>
+                    <div class="portfolio-content">
+                        <h3>International Logistics Website</h3>
+                        <p>A multilingual corporate website developed for a regional freight operator, featuring custom route inquiries and performance optimization.</p>
+                        <ul class="portfolio-highlights">
+                            <li>Optimized page load speed & multi-region contact routing</li>
+                            <li>Built with WPML multi-language integration</li>
+                        </ul>
+                        <div class="portfolio-tags">
+                            <span>WordPress</span>
+                            <span>PHP</span>
+                            <span>Cloudflare</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">Payment Plugin</div>
+                    <div class="portfolio-content">
+                        <h3>Payment & Booking Integration</h3>
+                        <p>A tailored WordPress plugin integrating local payment gateways and automated invoice processing for business services.</p>
+                        <ul class="portfolio-highlights">
+                            <li>Custom API integration for real-time payment status</li>
+                            <li>Automated order verification and security auditing</li>
+                        </ul>
+                        <div class="portfolio-tags">
+                            <span>Plugin Dev</span>
+                            <span>REST API</span>
+                            <span>PHP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">Consultancy Site</div>
+                    <div class="portfolio-content">
+                        <h3>B2B Consultancy Platform</h3>
+                        <p>A modernized corporate web platform built with custom Gutenberg blocks, clean code architecture, and a mobile-first layout.</p>
+                        <ul class="portfolio-highlights">
+                            <li>Achieved 90+ PageSpeed performance score</li>
+                            <li>Full site security hardening and database optimization</li>
+                        </ul>
+                        <div class="portfolio-tags">
+                            <span>WordPress</span>
+                            <span>Gutenberg</span>
+                            <span>MySQL</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="portfolio-card">
-            <div class="portfolio-image">Payment Plugin</div>
-            <div class="portfolio-content">
-                <h3>Payment & Booking Integration</h3>
-                <p>A tailored WordPress plugin integrating local payment gateways and automated invoice processing for business services.</p>
-                <ul class="portfolio-highlights">
-                    <li>Custom API integration for real-time payment status</li>
-                    <li>Automated order verification and security auditing</li>
-                </ul>
-                <div class="portfolio-tags">
-                    <span>Plugin Dev</span>
-                    <span>REST API</span>
-                    <span>PHP</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="portfolio-card">
-            <div class="portfolio-image">Consultancy Site</div>
-            <div class="portfolio-content">
-                <h3>B2B Consultancy Platform</h3>
-                <p>A modernized corporate web platform built with custom Gutenberg blocks, clean code architecture, and a mobile-first layout.</p>
-                <ul class="portfolio-highlights">
-                    <li>Achieved 90+ PageSpeed performance score</li>
-                    <li>Full site security hardening and database optimization</li>
-                </ul>
-                <div class="portfolio-tags">
-                    <span>WordPress</span>
-                    <span>Gutenberg</span>
-                    <span>MySQL</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
         <!-- Contact CTA Section -->
         <section id="contact" class="cta">
