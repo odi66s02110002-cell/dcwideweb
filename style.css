@@ -46,8 +46,10 @@ body {
 }
 
 .logo img {
-    height: 60px;
+    max-height: 60px;
     width: auto;
+    display: block;
+    transition: opacity 0.3s ease;
 }
 
 .logo img:hover {
