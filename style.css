@@ -738,3 +738,25 @@ body {
     font-size: 14px;
     color: #e0f2fe;
 }
+.faq-container {
+    max-width: 800px;
+    margin: 40px auto 0;
+    text-align: left;
+}
+.faq-item {
+    background: white;
+    padding: 20px 25px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #e5e7eb;
+}
+.faq-item h3 {
+    color: #0b3b82;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+.faq-item p {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.6;
+}
