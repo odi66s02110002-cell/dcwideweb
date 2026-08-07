@@ -523,7 +523,33 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     text-align: center;
 }
+/* ==========================================
+   Back to Top Button
+   ========================================== */
+#scrollTopBtn {
+    position: fixed;
+    right: 30px;
+    bottom: 100px; /* 放在聊天按鈕 (bottom: 30px) 的上方 */
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #0b3b82;
+    color: white;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 9998;
+    display: none; /* 預設隱藏，滾動時才顯示 */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: background 0.3s, opacity 0.3s;
+}
 
+#scrollTopBtn:hover {
+    background: #2563eb;
+}
 /* ==========================================
    14. Chat Widget
    ========================================== */
