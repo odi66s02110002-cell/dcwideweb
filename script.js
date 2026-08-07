@@ -42,6 +42,37 @@ function sendUserMessage(text) {
         chatBody.appendChild(botMsg);
         
         // 再次滾動到底部
+        /* ==========================================
+   1. Navigation & Scroll Effects
+   ========================================== */
+window.addEventListener("scroll", () => {
+    const nav = document.querySelector(".navbar");
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+    // 1. 導覽列陰影效果
+    if (window.scrollY > 50) {
+        nav.style.boxShadow = "0 2px 10px rgba(0,0,0,.15)";
+    } else {
+        nav.style.boxShadow = "none";
+    }
+
+    // 2. 當頁面向下滾動超過 300px 時顯示「回到最上方」按鈕
+    if (scrollTopBtn) {
+        if (window.scrollY > 300) {
+            scrollTopBtn.style.display = "flex";
+        } else {
+            scrollTopBtn.style.display = "none";
+        }
+    }
+});
+
+// 平滑滾動回到最上方
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
         chatBody.scrollTop = chatBody.scrollHeight;
     }, 1000);
 }
