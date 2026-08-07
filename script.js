@@ -1,3 +1,12 @@
+// 關閉瀏覽器的自動滾動恢復功能，強制重新整理時回到最頂部
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+// 網頁載入完成時立刻滾動至頂端
+window.addEventListener('beforeunload', () => {
+    window.scrollTo(0, 0);
+});
 /* ==========================================
    1. Navigation & Scroll Effects
    ========================================== */
