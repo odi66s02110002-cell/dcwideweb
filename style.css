@@ -524,31 +524,32 @@ body {
     text-align: center;
 }
 /* ==========================================
-   Back to Top Button
+   Back to Top Button (Aligned with Chat)
    ========================================== */
 #scrollTopBtn {
     position: fixed;
-    right: 30px;
-    bottom: 100px; /* 放在聊天按鈕 (bottom: 30px) 的上方 */
-    width: 45px;
-    height: 45px;
+    right: 30px;        /* 與聊天按鈕對齊右邊緣 */
+    bottom: 100px;      /* 位於聊天按鈕 (bottom: 30px) 的正上方 */
+    width: 60px;        /* 保持與聊天按鈕一樣的寬高，視覺更一致 */
+    height: 60px;
     border-radius: 50%;
     background: #0b3b82;
     color: white;
     border: none;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
     cursor: pointer;
     z-index: 9998;
-    display: none; /* 預設隱藏，滾動時才顯示 */
+    display: none;      /* 預設隱藏 */
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    transition: background 0.3s, opacity 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: background 0.3s, transform 0.2s;
 }
 
 #scrollTopBtn:hover {
     background: #2563eb;
+    transform: translateY(-3px);
 }
 /* ==========================================
    14. Chat Widget
