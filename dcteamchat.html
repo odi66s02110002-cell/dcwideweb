@@ -553,7 +553,6 @@
       const user = document.getElementById('userInput').value;
       const pass = document.getElementById('passInput').value;
       
-      // 更改為帳號: king / 密碼: 1234
       if(user === 'king' && pass === '1234') {
         document.getElementById('loginOverlay').style.display = 'none';
       } else {
@@ -584,7 +583,12 @@
 
     <div class="menu-list">
       <div class="sidebar-section">Active Channels</div>
-      <div class="menu-item active" onclick="switchChannel('client-accounts-q3', this)">
+      <!-- 最上方新增簡體中文群組 -->
+      <div class="menu-item active" onclick="switchChannel('cn-merchant-ops', this)">
+        <span># M天天电商商家运营群</span>
+        <span class="badge">15</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('client-accounts-q3', this)">
         <span># client-accounts-q3</span>
         <span class="badge">12</span>
       </div>
@@ -693,8 +697,8 @@
   <div class="chat-area">
     <div class="chat-header">
       <div class="channel-info">
-        <h2 id="channelTitle"># client-accounts-q3</h2>
-        <p id="channelDesc">DCWIDEWEB Enterprise E-commerce Merchant Portfolio</p>
+        <h2 id="channelTitle"># 跨境电商商家运营群</h2>
+        <p id="channelDesc">华南与东南亚区域跨境商家后台对接与运营讨论</p>
       </div>
       <div class="header-actions">
         <span>🔍 Search</span>
@@ -710,7 +714,7 @@
     <!-- Input Bar -->
     <div class="input-wrapper">
       <div class="input-box">
-        <textarea id="chatInput" placeholder="Send a message..."></textarea>
+        <textarea id="chatInput" placeholder="Message # 跨境电商商家运营群..."></textarea>
         <div class="input-toolbar">
           <div class="tool-btns">
             <span class="tool-btn" onclick="triggerFileUpload('Document')">📎 Attach</span>
@@ -730,6 +734,11 @@
     }
 
     const channelData = {
+      'cn-merchant-ops': {
+        title: '# 跨境电商商家运营群',
+        desc: '华南与东南亚区域跨境商家后台对接与运营讨论',
+        messages: generateChatMessages('cn-merchant-ops')
+      },
       'client-accounts-q3': {
         title: '# client-accounts-q3',
         desc: 'Enterprise E-commerce Merchant Portfolio & Account Discussions',
@@ -814,7 +823,41 @@
     };
 
     function generateChatMessages(type) {
-      if (type === 'client-accounts-q3') {
+      if (type === 'cn-merchant-ops') {
+        return [
+          { type: 'date', text: 'JUL 15, 2026' },
+          { author: '張志強 A. Zhang', title: 'Ops', color: '#2563eb', time: '09:30 AM', text: '大家早！本月华南大客户的后台API对接进度怎么样了？' },
+          { author: 'King', title: 'SAM', color: '#0284c7', time: '09:35 AM', text: '早！深圳极速电商的后台系统已经对接完成，正在做批量订单测试。' },
+          { author: '小婷 Tina Lin', title: 'PM', color: '#ec4899', time: '09:40 AM', text: '商品多规格（SKU）同步接口这块，广州商家反馈导入速度提升很明显。' },
+          { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '09:45 AM', text: '对，我们优化了 Redis 缓存层，目前万级商品导入只要2秒。' },
+          { author: 'King', title: 'SAM', color: '#0284c7', time: '09:48 AM', text: '赞！商家那边技术负责人非常满意，打算下周把余下的3个店铺也迁过来。' },
+          { type: 'date', text: 'JUL 22, 2026' },
+          { author: '玲 May Chen~', title: 'Design', color: '#8b5cf6', time: '02:15 PM', text: '商家后台中文版的全局暗黑模式 UI 稿更新了，请查收。', file: { name: '跨境商家后台_UI界面规范_v2.pdf', size: '3.6 MB', type: 'PDF' } },
+          { author: 'King', title: 'SAM', color: '#0284c7', time: '02:20 PM', text: '收到！视觉很干净，我顺便发给几个头部卖家看下反馈。' },
+          { author: '大衛 David Wang', title: 'BI', color: '#f59e0b', time: '02:25 PM', text: '上周东南亚发货的数据拉出来了，Shopee 和 Lazada 订单占比继续上升。' },
+          { author: 'King', title: 'SAM', color: '#0284c7', time: '02:30 PM', text: '好的大卫，把报表发我一份，下午我和客户开会正好要用。' },
+          { author: '大衛 David Wang', title: 'BI', color: '#f59e0b', time: '02:32 PM', text: '没问题，表格发这了。', file: { name: '华南商家_东南亚订单走势_Q3.xlsx', size: '1.8 MB', type: 'XLSX' } },
+          { author: 'King', title: 'SAM', color: '#0284c7', time: '02:35 PM', text: '收到，多谢！' },
+          { type: 'date', text: 'AUG 01, 2026' },
+          { author: 'Ken', title: 'QA', color: '#10b981', time: '11:00 AM', text: 'GCash 与 微信支付（跨境）结算接口压测通过，无丢单现象。' },
+          { author: 'King', title: 'SAM', color: '#0284c7', time: '11:05 AM', text: '太好了！这是这月推给新商家的核心卖点。' },
+          { author: '張志強 A. Zhang', title: 'Ops', color: '#2563eb', time: '11:10 AM', text: 'King，广州顺达供应链那边拟好的协议确定这周签吗？' },
+          { author: 'King', title: 'SAM', color: '#0284c7', time: '11:15 AM', text: '是的，法务 E. Rostova 已经审核过条款，今天下班前能盖章发回。' },
+          { author: 'E. Rostova', title: 'Legal', color: '#7c3aed', time: '11:20 AM', text: '补充协议盖章版已归档。', file: { name: '顺达供应链_跨境服务协议_已盖章.pdf', size: '2.3 MB', type: 'PDF' } },
+          { author: 'King', title: 'SAM', color: '#0284c7', time: '11:22 AM', text: '高效！感谢 Elena。' },
+          { type: 'date', text: 'AUG 08, 2026' },
+          { author: '小婷 Tina Lin', title: 'PM', color: '#ec4899', time: '03:30 PM', text: '提醒一下，下周一后台要做一次多语言自动切换功能的补丁更新。' },
+          { author: 'King', title: 'SAM', color: '#0284c7', time: '03:35 PM', text: '收到，我已经提前在商家大群里发了运维公告。' },
+          { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '03:40 PM', text: '更新窗口定在凌晨2点，对商家白天接单无影响。' },
+          { author: 'King', title: 'SAM', color: '#0284c7', time: '03:42 PM', text: '妥了！辛苦技术部的兄弟们。' },
+          { author: '張志強 A. Zhang', title: 'Ops', color: '#2563eb', time: '05:00 PM', text: '大家周末愉快！' },
+          { author: 'King', title: 'SAM', color: '#0284c7', time: '05:02 PM', text: '周末愉快，下周见！' },
+          { type: 'date', text: 'AUG 10, 2026' },
+          { author: 'King', title: 'SAM', color: '#0284c7', time: '09:00 AM', text: '大家早！今天有两家新入驻的跨境卖家需要配置初始后台账号。' },
+          { author: '小婷 Tina Lin', title: 'PM', color: '#ec4899', time: '09:05 AM', text: '早！账号权限模板我已经配好了，直接分配就行。' },
+          { author: 'King', title: 'SAM', color: '#0284c7', time: '09:10 AM', text: '收到，我这就去跟进对接。' }
+        ];
+      } else if (type === 'client-accounts-q3') {
         return [
           { type: 'date', text: 'JUL 18, 2026' },
           { author: 'S. Jenkins', title: 'VP Sales', color: '#0284c7', time: '09:10 AM', text: 'Morning team! How is the Q3 renewal list looking?' },
@@ -972,7 +1015,7 @@
       }
     }
 
-    let currentChannelKey = 'client-accounts-q3';
+    let currentChannelKey = 'cn-merchant-ops';
 
     function switchChannel(channelKey, element) {
       currentChannelKey = channelKey;
@@ -980,7 +1023,6 @@
       document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('active'));
       element.classList.add('active');
 
-      // 手機切換頻道後自動收起側邊欄
       if (window.innerWidth <= 768) {
         document.getElementById('sidebar').classList.remove('open');
         document.getElementById('sidebarOverlay').classList.remove('show');
@@ -1082,8 +1124,8 @@
 
       setTimeout(() => {
         const autoReplies = [
-          { author: "S. Jenkins", title: "VP Sales", color: "#0284c7", text: "Got it! Thanks for the update.", file: { name: "Merchant_Pipeline_Aug2026.pdf", size: "2.8 MB", type: "PDF" } },
-          { author: "D. Chen", title: "Lead Arch.", color: "#059669", text: "Updated backend API config accordingly.", file: { name: "API_Deployment_Roadmap.xlsx", size: "1.2 MB", type: "XLSX" } }
+          { author: "張志強 A. Zhang", title: "Ops", color: "#2563eb", text: "收到！我这就让团队去安排落地执行。", file: { name: "跨境商家对接计划书_v2.pdf", size: "2.8 MB", type: "PDF" } },
+          { author: "小婷 Tina Lin", title: "PM", color: "#ec4899", text: "收到，相关后台接口已经在测试环境准备好了。", file: { name: "商家后台功能排期表.xlsx", size: "1.2 MB", type: "XLSX" } }
         ];
         const reply = autoReplies[Math.floor(Math.random() * autoReplies.length)];
         reply.time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
