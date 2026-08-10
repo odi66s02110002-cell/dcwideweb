@@ -22,7 +22,7 @@
 
     /* Sidebar */
     .sidebar {
-      width: 280px;
+      width: 290px;
       background-color: #1e293b;
       border-right: 1px solid #334155;
       display: flex;
@@ -228,7 +228,7 @@
     .message-group {
       display: flex;
       gap: 14px;
-      max-width: 850px;
+      max-width: 900px;
     }
 
     .msg-avatar {
@@ -295,7 +295,7 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      width: 340px;
+      width: 360px;
       transition: border-color 0.2s;
     }
 
@@ -437,7 +437,7 @@
       <div class="sidebar-section">Channels</div>
       <div class="menu-item active" onclick="switchChannel('client-accounts-q3', this)">
         <span># client-accounts-q3</span>
-        <span class="badge">3</span>
+        <span class="badge">5</span>
       </div>
       <div class="menu-item" onclick="switchChannel('global-expansion', this)">
         <span># global-expansion</span>
@@ -501,34 +501,51 @@
   </div>
 
   <script>
-    // 各頻道的假對話與資料結構
+    // 擴充大量真實感濃厚的對話資料庫
     const channelData = {
       'client-accounts-q3': {
         title: '# client-accounts-q3',
         desc: 'DCWIDEWEB Enterprise Portfolio & Account Strategy Channel',
         messages: [
           { type: 'date', text: 'MAY 12, 2025 — Welcome Onboard' },
-          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: 'May 12, 2025 09:15 AM', text: 'Welcome to the team! Glad to have you joining us as <b>Senior Account Manager</b>. You will be overseeing key enterprise accounts on dcwideweb.online. Let\'s kick off the Q3 account review planning soon!' },
+          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: 'May 12, 2025 09:15 AM', text: 'Welcome to the team! Glad to have you joining us as <b>Senior Account Manager</b>. You will be overseeing key enterprise accounts on dcwideweb.online. Let's kick off the Q3 account review planning soon!' },
+          { type: 'date', text: 'JUNE 28, 2025 — Q3 Kickoff' },
+          { author: 'Marcus Vance', title: 'Finance Director', color: '#d97706', time: '11:05 AM', text: 'All key account revenue targets for Q3 are now synced into Salesforce. Please check your assigned tier-1 client targets.' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '11:20 AM', text: 'Thanks Marcus. I have reviewed the target matrix. The 18% expansion goal for Apex Global looks achievable given their recent tech stack upgrades.' },
+          { type: 'date', text: 'YESTERDAY' },
+          { author: 'Elena Rostova', title: 'Legal Counsel', color: '#7c3aed', time: '03:14 PM', text: 'Hi team, I've finalized the Master Services Agreement (MSA) revision for Apex Global. The SLA guarantees and compliance terms on page 14 have been updated.', file: { name: 'ApexGlobal_MSA_Renewal_v3.pdf', size: '2.4 MB', type: 'PDF' } },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '03:45 PM', text: 'Awesome, thanks Elena. I will present this amended draft during tomorrow's executive alignment call with Apex's CTO.' },
+          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '04:10 PM', text: 'Also, server migration specs for dcwideweb.online cluster have been compiled. Here is the technical cost projection document.', file: { name: 'Infrastructure_Cost_Projection_Q3.xlsx', size: '1.1 MB', type: 'XLSX' } },
           { type: 'date', text: 'TODAY' },
-          { author: 'Elena Rostova', title: 'Legal Counsel', color: '#7c3aed', time: '10:14 AM', text: 'Hi team, I\'ve reviewed the Master Services Agreement (MSA) for the Apex Global renewal. The compliance clause on page 14 has been updated.', file: { name: 'ApexGlobal_MSA_Renewal_v3.pdf', size: '2.4 MB', type: 'PDF' } },
-          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '10:30 AM', text: 'Server migration specs for dcwideweb.online cluster have been compiled. Here is the technical overview document.', file: { name: 'Infrastructure_Cost_Projection_Q3.xlsx', size: '1.1 MB', type: 'XLSX' } }
+          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '09:30 AM', text: 'Quick reminder: Enterprise Client Status Sync is scheduled for 2:00 PM today. Make sure to update your pipeline deals.' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '09:42 AM', text: 'All account decks are up to date. I'll be covering the $120kupsell pipeline for CloudSync Corp as well.' },
+          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '10:05 AM', text: 'Staging environment for CloudSync's custom deployment is ready for client UAT. Here is the credential brief.', file: { name: 'CloudSync_UAT_Deployment_Brief.docx', size: '920 KB', type: 'DOCX' } }
         ]
       },
       'global-expansion': {
         title: '# global-expansion',
         desc: 'APAC & EMEA Market Penetration & Licensing Roadmap',
         messages: [
+          { type: 'date', text: 'JULY 15, 2025' },
+          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '10:00 AM', text: 'We are officially initiating Phase 2 of our APAC expansion program. Tokyo & Singapore nodes are now active.' },
           { type: 'date', text: 'YESTERDAY' },
-          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '02:15 PM', text: 'Our Tokyo infrastructure setup is now 80% complete. Senior Account Managers should start preparing pitch decks for local partners.' },
-          { author: 'Marcus Vance', title: 'Finance Director', color: '#d97706', time: '04:00 PM', text: 'APAC Q3 budget allocations are finalized. Please review the breakdown before submitting vendor requests.', file: { name: 'APAC_Q3_Budget_Allocation.pdf', size: '4.2 MB', type: 'PDF' } }
+          { author: 'Marcus Vance', title: 'Finance Director', color: '#d97706', time: '02:15 PM', text: 'APAC Q3 budget allocations are finalized. Please review the regional breakdown before submitting vendor requests.', file: { name: 'APAC_Q3_Budget_Allocation.pdf', size: '4.2 MB', type: 'PDF' } },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '02:50 PM', text: 'Received. Are the localization agency retainer fees included under line item 4B?' },
+          { author: 'Marcus Vance', title: 'Finance Director', color: '#d97706', time: '03:05 PM', text: 'Yes, line item 4B covers all APAC localization and translation contracts.' },
+          { type: 'date', text: 'TODAY' },
+          { author: 'Elena Rostova', title: 'Legal Counsel', color: '#7c3aed', time: '11:20 AM', text: 'Cross-border data transfer compliance checklists for Japan (APPI) and EU (GDPR) have been attached.', file: { name: 'Global_Data_Compliance_Checklist.pdf', size: '1.8 MB', type: 'PDF' } }
         ]
       },
       'general-announcements': {
         title: '# general-announcements',
         desc: 'Company-wide news, HR updates & policy notices',
         messages: [
-          { type: 'date', text: 'AUGUST 1, 2026' },
-          { author: 'HR Operations', title: 'Admin', color: '#dc2626', time: '09:00 AM', text: 'Reminder: All Q3 expense reports must be submitted through the enterprise portal by end of week.' },
+          { type: 'date', text: 'MAY 1, 2025' },
+          { author: 'HR Operations', title: 'Admin', color: '#dc2626', time: '09:00 AM', text: 'Welcome to Q2! Please review the updated company benefits and expense reimbursement guidelines in the portal.' },
+          { type: 'date', text: 'JULY 01, 2025' },
+          { author: 'IT Helpdesk', title: 'Admin', color: '#dc2626', time: '10:00 AM', text: 'Mandatory SSO Security Upgrade: All employees must re-authenticate via Okta 2FA by Friday.' },
+          { type: 'date', text: 'TODAY' },
+          { author: 'HR Operations', title: 'Admin', color: '#dc2626', time: '09:00 AM', text: 'Reminder: All Q3 enterprise expense reports must be submitted through the portal by end of week.' },
           { author: 'HR Operations', title: 'Admin', color: '#dc2626', time: '09:05 AM', text: 'Please download the updated Remote Work & Security Policy handbook below.', file: { name: 'DCWIDEWEB_Employee_Handbook_2026.pdf', size: '5.8 MB', type: 'PDF' } }
         ]
       },
@@ -536,32 +553,47 @@
         title: '# tech-support',
         desc: 'Internal IT helpdesk, access control & system status',
         messages: [
+          { type: 'date', text: 'YESTERDAY' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '01:15 PM', text: 'Hi IT team, I need elevated portal access to download client traffic telemetry logs for Apex Global.' },
+          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '01:30 PM', text: 'Access granted. Your role has been updated in IAM. You should see the Telemetry tab now.' },
           { type: 'date', text: 'TODAY' },
-          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '08:30 AM', text: 'Scheduled maintenance on dcwideweb.online primary node completed with zero downtime. All systems nominal.' }
+          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '08:30 AM', text: 'Scheduled maintenance on dcwideweb.online primary node completed with zero downtime. All systems nominal.', file: { name: 'Server_Health_Metrics_Report.pdf', size: '3.1 MB', type: 'PDF' } }
         ]
       },
       'dm-sarah': {
         title: '🔒 Direct Message with Sarah Jenkins',
         desc: 'VP Sales • Direct Channel',
         messages: [
+          { type: 'date', text: 'MAY 15, 2025' },
+          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '02:00 PM', text: 'Great performance on the client onboarding session this morning!' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '02:10 PM', text: 'Thanks Sarah! The team worked hard to streamline the migration process.' },
+          { type: 'date', text: 'YESTERDAY' },
+          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '04:45 PM', text: 'Here is the draft Q3 commission & bonus structure for senior account leads.', file: { name: 'Q3_Sales_Commission_Structure.xlsx', size: '650 KB', type: 'XLSX' } },
           { type: 'date', text: 'TODAY' },
-          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '09:00 AM', text: 'Hey, do you have 10 mins this afternoon to jump on a quick call regarding the enterprise account renewal?' }
+          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '09:00 AM', text: 'Hey, do you have 10 mins this afternoon to jump on a quick call regarding the enterprise account renewal?' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '09:12 AM', text: 'Sure thing! How about 3:30 PM right after the general review sync?' }
         ]
       },
       'dm-david': {
         title: '🔒 Direct Message with David Chen',
         desc: 'Lead Architect • Direct Channel',
         messages: [
+          { type: 'date', text: 'JULY 20, 2025' },
+          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '11:30 AM', text: 'Hey, the client requested a custom API integration report for their security audit. Here it is.', file: { name: 'API_Security_Audit_Report.pdf', size: '2.9 MB', type: 'PDF' } },
           { type: 'date', text: 'YESTERDAY' },
-          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '05:20 PM', text: 'API endpoints for the new account dashboard are live on staging. Let me know if you need test credentials.' }
+          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '05:20 PM', text: 'API endpoints for the new account dashboard are live on staging. Let me know if you need test credentials.' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '05:35 PM', text: 'Will test it out tonight. Thanks David!' }
         ]
       },
       'dm-elena': {
         title: '🔒 Direct Message with Elena Rostova',
         desc: 'Legal Counsel • Direct Channel',
         messages: [
+          { type: 'date', text: 'YESTERDAY' },
+          { author: 'Elena Rostova', title: 'Legal Counsel', color: '#7c3aed', time: '03:00 PM', text: 'I've reviewed the redlined NDA sent by the client's legal department.' },
           { type: 'date', text: 'TODAY' },
-          { author: 'Elena Rostova', title: 'Legal Counsel', color: '#7c3aed', time: '08:45 AM', text: 'I received the countersigned NDA from the client. Everything looks good on our side.' }
+          { author: 'Elena Rostova', title: 'Legal Counsel', color: '#7c3aed', time: '08:45 AM', text: 'Good news! I received the countersigned NDA from the client. Everything looks good on our side.', file: { name: 'Apex_Signed_NDA_Executed.pdf', size: '1.5 MB', type: 'PDF' } },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '08:50 AM', text: 'Perfect! Moving them to the final contract stage now.' }
         ]
       }
     };
@@ -571,15 +603,12 @@
     function switchChannel(channelKey, element) {
       currentChannelKey = channelKey;
       
-      // 切換選單 Active 樣式
       document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('active'));
       element.classList.add('active');
 
-      // 清除未讀 Badge
       const badge = element.querySelector('.badge');
       if (badge) badge.remove();
 
-      // 渲染對話標題與內容
       const data = channelData[channelKey];
       document.getElementById('channelTitle').innerText = data.title;
       document.getElementById('channelDesc').innerText = data.desc;
@@ -642,7 +671,6 @@
       const now = new Date();
       const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-      // 將使用者發送的訊息推入當前頻道資料庫
       channelData[currentChannelKey].messages.push({
         author: 'You',
         title: 'Senior Account Manager',
@@ -654,11 +682,11 @@
       input.value = '';
       renderMessages();
 
-      // 自動回覆模擬
       setTimeout(() => {
         const autoReplies = [
-          { author: "Sarah Jenkins", title: "VP Sales", color: "#0284c7", text: "Got it! Thanks for the quick update.", file: { name: "Q3_Account_Summary.pdf", size: "3.8 MB", type: "PDF" } },
-          { author: "Elena Rostova", title: "Legal Counsel", color: "#7c3aed", text: "Acknowledged. Logging this into our compliance system.", file: { name: "Addendum_Approved.docx", size: "840 KB", type: "DOCX" } }
+          { author: "Sarah Jenkins", title: "VP Sales", color: "#0284c7", text: "Got it! Thanks for the quick update. I'll share this with the leadership team.", file: { name: "Q3_Account_Summary.pdf", size: "3.8 MB", type: "PDF" } },
+          { author: "Elena Rostova", title: "Legal Counsel", color: "#7c3aed", text: "Acknowledged. Logging this into our compliance system.", file: { name: "Addendum_Approved.docx", size: "840 KB", type: "DOCX" } },
+          { author: "David Chen", title: "Lead Architect", color: "#059669", text: "Thanks for the feedback! I've updated the deployment roadmap accordingly.", file: { name: "System_Architecture_v4.xlsx", size: "1.4 MB", type: "XLSX" } }
         ];
         const reply = autoReplies[Math.floor(Math.random() * autoReplies.length)];
         reply.time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -687,7 +715,6 @@
       });
     }
 
-    // 初始化載入
     renderMessages();
   </script>
 </body>
