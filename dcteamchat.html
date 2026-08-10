@@ -1,165 +1,92 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DC Wide Web - 企業內部工作空間 (dcwideweb.online)</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>dcwideweb - Enterprise Connect</title>
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
     body {
       display: flex;
       height: 100vh;
       background-color: #0f172a;
-      color: #334155;
+      color: #e2e8f0;
       overflow: hidden;
     }
 
-    /* 側邊欄 Sidebar */
+    /* Sidebar */
     .sidebar {
       width: 280px;
       background-color: #1e293b;
-      color: #94a3b8;
+      border-right: 1px solid #334155;
       display: flex;
       flex-direction: column;
-      border-right: 1px solid #334155;
     }
 
-    .workspace-header {
-      padding: 16px 20px;
-      background-color: #0f172a;
+    .brand-header {
+      padding: 18px 20px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #38bdf8;
       border-bottom: 1px solid #334155;
       display: flex;
       align-items: center;
       justify-content: space-between;
-    }
-
-    .brand-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: #f8fafc;
       letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
-    .brand-badge {
-      font-size: 10px;
-      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-      color: #fff;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 600;
-    }
-
-    .domain-tag {
+    .brand-header .domain {
       font-size: 11px;
-      color: #64748b;
+      color: #94a3b8;
+      font-weight: 400;
       margin-top: 2px;
     }
 
-    .section-title {
-      padding: 18px 20px 6px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #64748b;
-      font-weight: 700;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .menu-item {
-      padding: 9px 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: all 0.2s;
-      border-left: 3px solid transparent;
-      color: #cbd5e1;
-    }
-
-    .menu-item:hover {
-      background-color: #334155;
-      color: #f8fafc;
-    }
-
-    .menu-item.active {
-      background-color: #334155;
-      color: #38bdf8;
-      border-left-color: #38bdf8;
-      font-weight: 600;
-    }
-
-    .badge-count {
-      margin-left: auto;
-      background-color: #ef4444;
-      color: white;
-      font-size: 11px;
-      padding: 2px 6px;
-      border-radius: 10px;
-      font-weight: bold;
-    }
-
-    .user-status {
+    .status-online {
       width: 8px;
       height: 8px;
+      background-color: #22c55e;
       border-radius: 50%;
-      flex-shrink: 0;
+      box-shadow: 0 0 8px #22c55e;
     }
 
-    .online { background-color: #10b981; }
-    .busy { background-color: #f59e0b; }
-    .offline { background-color: #64748b; }
-
-    /* 個人資料卡片（側欄底部） */
     .user-profile-card {
-      margin-top: auto;
-      padding: 16px;
+      padding: 14px 20px;
       background-color: #0f172a;
-      border-top: 1px solid #334155;
+      border-bottom: 1px solid #334155;
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
-    .user-avatar-main {
+    .user-avatar {
       width: 40px;
       height: 40px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      border-radius: 8px;
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
-      font-size: 16px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      font-weight: 700;
+      font-size: 15px;
     }
 
-    .user-details {
+    .user-info {
       display: flex;
       flex-direction: column;
-      overflow: hidden;
     }
 
     .user-name {
       font-size: 14px;
       font-weight: 600;
       color: #f8fafc;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
     }
 
     .user-role {
@@ -168,80 +95,108 @@
       font-weight: 500;
     }
 
-    .user-joined {
+    .user-tenure {
       font-size: 10px;
       color: #64748b;
-      margin-top: 1px;
     }
 
-    /* 主區域 Main Area */
+    .sidebar-section {
+      padding: 16px 20px 8px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    .menu-list {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .menu-item {
+      padding: 9px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 13.5px;
+      color: #94a3b8;
+      border-left: 3px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .menu-item:hover {
+      background-color: #334155;
+      color: #f1f5f9;
+    }
+
+    .menu-item.active {
+      background-color: #0f172a;
+      color: #38bdf8;
+      border-left-color: #38bdf8;
+      font-weight: 600;
+    }
+
+    .badge {
+      margin-left: auto;
+      background-color: #0284c7;
+      color: #fff;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    .presence-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+    .dot-green { background-color: #22c55e; }
+    .dot-amber { background-color: #f59e0b; }
+    .dot-gray { background-color: #64748b; }
+
+    /* Main Chat Area */
     .chat-area {
       flex: 1;
       display: flex;
       flex-direction: column;
-      background-color: #f8fafc;
+      background-color: #0f172a;
     }
 
-    /* 頁首 Header */
     .chat-header {
       height: 64px;
-      background-color: #ffffff;
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 1px solid #334155;
       padding: 0 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      background-color: #1e293b;
     }
 
-    .header-info {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .channel-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: #0f172a;
+    .channel-info h2 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #f8fafc;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .channel-desc {
+    .channel-info p {
       font-size: 12px;
-      color: #64748b;
+      color: #94a3b8;
       margin-top: 2px;
     }
 
     .header-actions {
       display: flex;
-      align-items: center;
       gap: 16px;
-    }
-
-    .search-box {
-      background-color: #f1f5f9;
-      border: 1px solid #cbd5e1;
-      border-radius: 20px;
-      padding: 6px 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
       font-size: 13px;
-      color: #64748b;
-      width: 220px;
+      color: #94a3b8;
     }
 
-    .search-box input {
-      border: none;
-      background: transparent;
-      outline: none;
-      width: 100%;
-      font-size: 12px;
-    }
-
-    /* 訊息紀錄區 */
     .message-history {
       flex: 1;
       padding: 24px;
@@ -249,482 +204,491 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
-      background-color: #f8fafc;
     }
 
-    .date-divider {
+    .date-separator {
       display: flex;
       align-items: center;
       text-align: center;
-      color: #94a3b8;
+      color: #64748b;
       font-size: 11px;
       font-weight: 600;
       margin: 10px 0;
     }
-
-    .date-divider::before, .date-divider::after {
+    .date-separator::before, .date-separator::after {
       content: '';
       flex: 1;
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 1px solid #1e293b;
     }
-
-    .date-divider span {
+    .date-separator span {
       padding: 0 12px;
-      background: #f8fafc;
+      background-color: #0f172a;
     }
 
     .message-group {
       display: flex;
       gap: 14px;
-      max-width: 85%;
+      max-width: 850px;
     }
 
-    .message-group.self {
-      align-self: flex-end;
-      flex-direction: row-reverse;
-    }
-
-    .avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      color: white;
+    .msg-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
+      font-weight: 700;
       font-size: 14px;
+      color: #fff;
       flex-shrink: 0;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
 
-    .message-content {
+    .msg-body {
       display: flex;
       flex-direction: column;
     }
 
-    .message-group.self .message-content {
-      align-items: flex-end;
-    }
-
-    .message-info {
+    .msg-meta {
       display: flex;
       align-items: baseline;
-      gap: 8px;
-      margin-bottom: 4px;
+      gap: 10px;
+      margin-bottom: 5px;
     }
 
-    .author {
-      font-size: 13px;
-      font-weight: 700;
-      color: #1e293b;
+    .msg-author {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f8fafc;
     }
 
-    .role-badge {
-      font-size: 10px;
-      background-color: #e0f2fe;
-      color: #0369a1;
+    .msg-title {
+      font-size: 11px;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
       padding: 1px 6px;
       border-radius: 4px;
-      font-weight: 600;
     }
 
-    .timestamp {
-      font-size: 11px;
-      color: #94a3b8;
-    }
-
-    .text {
-      font-size: 14px;
-      color: #334155;
-      line-height: 1.6;
-      background-color: #ffffff;
-      padding: 12px 16px;
-      border-radius: 0 12px 12px 12px;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-    }
-
-    .message-group.self .text {
-      background-color: #0284c7;
-      color: #ffffff;
-      border-color: #0284c7;
-      border-radius: 12px 0 12px 12px;
-    }
-
-    /* 附件與專案卡片 */
-    .attachment-card {
-      margin-top: 8px;
-      background-color: #f1f5f9;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      padding: 10px 14px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      width: max-content;
-      max-width: 100%;
-    }
-
-    .attachment-icon {
-      font-size: 24px;
-      color: #0284c7;
-    }
-
-    .attachment-details {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .attachment-name {
-      font-size: 13px;
-      font-weight: 600;
-      color: #0f172a;
-    }
-
-    .attachment-size {
+    .msg-time {
       font-size: 11px;
       color: #64748b;
     }
 
-    /* 輸入區 */
-    .input-container {
-      padding: 16px 24px 20px;
-      background-color: #ffffff;
-      border-top: 1px solid #e2e8f0;
+    .msg-text {
+      font-size: 13.5px;
+      color: #cbd5e1;
+      line-height: 1.55;
+      background-color: #1e293b;
+      padding: 10px 14px;
+      border-radius: 0 10px 10px 10px;
+      border: 1px solid #334155;
     }
 
-    .input-box {
-      border: 1px solid #cbd5e1;
-      border-radius: 12px;
-      padding: 12px;
-      background-color: #ffffff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    /* File Card Attachment */
+    .file-attachment {
+      margin-top: 8px;
+      background-color: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 340px;
       transition: border-color 0.2s;
     }
 
-    .input-box:focus-within {
-      border-color: #0284c7;
+    .file-attachment:hover {
+      border-color: #38bdf8;
+    }
+
+    .file-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      background-color: rgba(2, 132, 199, 0.2);
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 11px;
+    }
+
+    .file-details {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .file-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #f1f5f9;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .file-meta {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    .file-download {
+      color: #38bdf8;
+      font-size: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Input Area */
+    .input-wrapper {
+      padding: 18px 24px;
+      background-color: #1e293b;
+      border-top: 1px solid #334155;
+    }
+
+    .input-box {
+      background-color: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 12px;
     }
 
     textarea {
       width: 100%;
       height: 52px;
+      background: transparent;
       border: none;
       outline: none;
       resize: none;
-      font-size: 14px;
-      color: #0f172a;
+      font-size: 13.5px;
+      color: #f8fafc;
     }
 
-    .toolbar {
+    textarea::placeholder {
+      color: #64748b;
+    }
+
+    .input-toolbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-top: 8px;
       padding-top: 8px;
-      border-top: 1px solid #f1f5f9;
+      border-top: 1px solid #1e293b;
     }
 
-    .actions {
+    .tool-btns {
       display: flex;
-      gap: 16px;
-      color: #64748b;
-      font-size: 14px;
-    }
-
-    .actions i {
+      gap: 14px;
+      color: #94a3b8;
+      font-size: 13px;
       cursor: pointer;
-      transition: color 0.2s;
     }
 
-    .actions i:hover {
-      color: #0284c7;
+    .tool-btn:hover {
+      color: #38bdf8;
     }
 
     .send-btn {
-      background: linear-gradient(135deg, #0284c7, #2563eb);
+      background-color: #0284c7;
       color: white;
       border: none;
-      padding: 8px 18px;
-      border-radius: 8px;
+      padding: 7px 18px;
+      border-radius: 6px;
       font-size: 13px;
       font-weight: 600;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 2px 4px rgba(2, 132, 199, 0.3);
+      transition: background-color 0.2s;
     }
 
     .send-btn:hover {
-      opacity: 0.95;
+      background-color: #0369a1;
     }
   </style>
 </head>
 <body>
 
-  <!-- 側邊欄 -->
+  <!-- Sidebar -->
   <div class="sidebar">
-    <div class="workspace-header">
+    <div class="brand-header">
       <div>
-        <div class="brand-title">
-          <i class="fa-solid fa-globe"></i> DC Wide Web
-          <span class="brand-badge">PRO</span>
-        </div>
-        <div class="domain-tag">dcwideweb.online</div>
+        <div>DCWIDEWEB</div>
+        <div class="domain">dcwideweb.online</div>
       </div>
-      <i class="fa-solid fa-sliders" style="color: #64748b; cursor: pointer;"></i>
+      <div class="status-online" title="System Operational"></div>
     </div>
 
-    <div class="section-title">
-      <span>頻道列表 (Channels)</span>
-      <i class="fa-solid fa-plus" style="cursor: pointer;"></i>
-    </div>
-    <div class="menu-item active" onclick="switchChannel('client-dcwide-web', '# client-dcwide-web', '專案客戶：DC Wide Web 官網重構與營運維護')">
-      <i class="fa-solid fa-hashtag"></i>
-      <span>client-dcwide-web</span>
-      <span class="badge-count">3</span>
-    </div>
-    <div class="menu-item" onclick="switchChannel('account-management', '# account-management', '大客戶客情維護、續約談判與季度 QBR')">
-      <i class="fa-solid fa-hashtag"></i>
-      <span>account-management</span>
-    </div>
-    <div class="menu-item" onclick="switchChannel('design-dev-sync', '# design-dev-sync', '跨部門設計與工程交付同步討論')">
-      <i class="fa-solid fa-hashtag"></i>
-      <span>design-dev-sync</span>
-    </div>
-    <div class="menu-item" onclick="switchChannel('announcements', '# 00_公司重要公告', '全公司政策、HR 資訊與業績達標公告')">
-      <i class="fa-solid fa-bullhorn"></i>
-      <span>00_公司重要公告</span>
-    </div>
-
-    <div class="section-title">
-      <span>私人訊息 (Direct Messages)</span>
-    </div>
-    <div class="menu-item">
-      <span class="user-status online"></span>
-      <span>張總監 (Managing Director)</span>
-    </div>
-    <div class="menu-item">
-      <span class="user-status busy"></span>
-      <span>Kevin (Lead Engineer)</span>
-    </div>
-    <div class="menu-item">
-      <span class="user-status online"></span>
-      <span>Jessica (UI/UX Lead)</span>
-    </div>
-    <div class="menu-item">
-      <span class="user-status offline"></span>
-      <span>Finance Team (財務組)</span>
-    </div>
-
-    <!-- 個人身份卡片 -->
+    <!-- User Profile Badge -->
     <div class="user-profile-card">
-      <div class="user-avatar-main">我</div>
-      <div class="user-details">
-        <div class="user-name">Alex (Me)</div>
+      <div class="user-avatar">SAM</div>
+      <div class="user-info">
+        <div class="user-name">You</div>
         <div class="user-role">Senior Account Manager</div>
-        <div class="user-joined"><i class="fa-regular fa-calendar-check"></i> 入職: 2025年5月 (資歷 1年+)</div>
+        <div class="user-tenure">Member since May 2025</div>
+      </div>
+    </div>
+
+    <div class="menu-list">
+      <div class="sidebar-section">Channels</div>
+      <div class="menu-item active" onclick="switchChannel('client-accounts-q3', this)">
+        <span># client-accounts-q3</span>
+        <span class="badge">3</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('global-expansion', this)">
+        <span># global-expansion</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('general-announcements', this)">
+        <span># general-announcements</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('tech-support', this)">
+        <span># tech-support</span>
+      </div>
+
+      <div class="sidebar-section">Direct Messages</div>
+      <div class="menu-item" onclick="switchChannel('dm-sarah', this)">
+        <span class="presence-dot dot-green"></span>
+        <span>Sarah Jenkins (VP Sales)</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('dm-david', this)">
+        <span class="presence-dot dot-amber"></span>
+        <span>David Chen (Lead Architect)</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('dm-elena', this)">
+        <span class="presence-dot dot-green"></span>
+        <span>Elena Rostova (Legal Counsel)</span>
       </div>
     </div>
   </div>
 
-  <!-- 主對話區域 -->
+  <!-- Chat Content Area -->
   <div class="chat-area">
-    <!-- 頁首 -->
     <div class="chat-header">
-      <div class="header-info">
-        <div class="channel-title" id="currentChannelTitle">
-          <i class="fa-solid fa-hashtag" style="color: #64748b;"></i> client-dcwide-web
-        </div>
-        <div class="channel-desc" id="currentChannelDesc">專案客戶：DC Wide Web 官網重構與營運維護 (dcwideweb.online)</div>
+      <div class="channel-info">
+        <h2 id="channelTitle"># client-accounts-q3</h2>
+        <p id="channelDesc">DCWIDEWEB Enterprise Portfolio & Account Strategy Channel</p>
       </div>
-
       <div class="header-actions">
-        <div class="search-box">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="搜尋 dcwideweb 對話與檔案...">
-        </div>
-        <i class="fa-solid fa-user-group" style="color: #64748b; cursor: pointer;" title="成員列表 (12)"></i>
-        <i class="fa-solid fa-pin" style="color: #64748b; cursor: pointer;" title="置頂訊息"></i>
+        <span>🔍 Search</span>
+        <span>📌 Pinned Files</span>
+        <span>⚙️ Settings</span>
       </div>
     </div>
 
-    <!-- 訊息區域 -->
-    <div class="message-history" id="messageHistory">
-
-      <div class="date-divider">
-        <span>2025 年 05 月 12 日（Alex 入職首月紀錄）</span>
-      </div>
-
-      <div class="message-group">
-        <div class="avatar" style="background-color: #8b5cf6;">張</div>
-        <div class="message-content">
-          <div class="message-info">
-            <span class="author">張總監</span>
-            <span class="role-badge">Managing Director</span>
-            <span class="timestamp">2025/05/12 10:00 AM</span>
-          </div>
-          <div class="text">歡迎 Alex 加入 DC Wide Web 團隊！擔任我們的 Senior Account Manager。這一年 dcwideweb.online 的重點客戶維護與新營運合約就交給你帶領 AM 團隊了！</div>
-        </div>
-      </div>
-
-      <div class="date-divider">
-        <span>今天 (Today)</span>
-      </div>
-
-      <div class="message-group">
-        <div class="avatar" style="background-color: #f59e0b;">K</div>
-        <div class="message-content">
-          <div class="message-info">
-            <span class="author">Kevin</span>
-            <span class="role-badge">Lead Engineer</span>
-            <span class="timestamp">09:45 AM</span>
-          </div>
-          <div class="text">@Alex 早安！dcwideweb.online 的新伺服器擴充與網域 SSL 憑證已更新完畢，目前運行順暢。客戶那邊對上週上線的 Client Portal 測試滿意嗎？</div>
-        </div>
-      </div>
-
-      <div class="message-group self">
-        <div class="avatar" style="background-color: #0284c7;">我</div>
-        <div class="message-content">
-          <div class="message-info">
-            <span class="author">Alex</span>
-            <span class="role-badge">Senior Account Manager</span>
-            <span class="timestamp">09:50 AM</span>
-          </div>
-          <div class="text">早！客戶昨天回饋非常滿意！從上年 5 月我接手 dcwideweb.online 這個帳戶至今，續約率順利達到 100%。他們剛剛已經批准了 Q3 階段的維護加值合約提案！🎉</div>
-          
-          <div class="attachment-card">
-            <i class="fa-solid fa-file-pdf attachment-icon"></i>
-            <div class="attachment-details">
-              <span class="attachment-name">DCWideWeb_Q3_Retainer_Signed.pdf</span>
-              <span class="attachment-size">2.4 MB • 雙方已完成簽署</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="message-group">
-        <div class="avatar" style="background-color: #ec4899;">J</div>
-        <div class="message-content">
-          <div class="message-info">
-            <span class="author">Jessica</span>
-            <span class="role-badge">UI/UX Lead</span>
-            <span class="timestamp">10:02 AM</span>
-          </div>
-          <div class="text">太讚了！Alex 效率超高！我已經把 dcwideweb.online 下一季度的品牌視覺規範（Design System v2.1）準備好了，有需要隨時跟我拿。</div>
-        </div>
-      </div>
-
+    <div class="message-history" id="chatHistory">
+      <!-- 內容將由 JavaScript 動態切換與渲染 -->
     </div>
 
-    <!-- 輸入框 -->
-    <div class="input-container">
+    <!-- Input Bar -->
+    <div class="input-wrapper">
       <div class="input-box">
-        <textarea id="msgInput" placeholder="發送訊息至 # client-dcwide-web... (Enter 發送)"></textarea>
-        <div class="toolbar">
-          <div class="actions">
-            <i class="fa-solid fa-paperclip" title="夾帶檔案"></i>
-            <i class="fa-solid fa-face-smile" title="插入表情符号"></i>
-            <i class="fa-solid fa-at" title="提及同事"></i>
-            <i class="fa-solid fa-code" title="插入程式碼"></i>
+        <textarea id="chatInput" placeholder="Send a message..."></textarea>
+        <div class="input-toolbar">
+          <div class="tool-btns">
+            <span class="tool-btn" onclick="triggerFileUpload('Document')">📎 Attach File</span>
+            <span class="tool-btn" onclick="triggerFileUpload('Report')">📊 Insert Metric</span>
+            <span class="tool-btn">🙂 Emoji</span>
+            <span class="tool-btn">@ Mention</span>
           </div>
-          <button class="send-btn" onclick="sendMessage()">
-            發送 <i class="fa-solid fa-paper-plane"></i>
-          </button>
+          <button class="send-btn" onclick="handleSend()">Send Message</button>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    // 切換頻道功能 (模擬)
-    function switchChannel(id, name, desc) {
+    // 各頻道的假對話與資料結構
+    const channelData = {
+      'client-accounts-q3': {
+        title: '# client-accounts-q3',
+        desc: 'DCWIDEWEB Enterprise Portfolio & Account Strategy Channel',
+        messages: [
+          { type: 'date', text: 'MAY 12, 2025 — Welcome Onboard' },
+          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: 'May 12, 2025 09:15 AM', text: 'Welcome to the team! Glad to have you joining us as <b>Senior Account Manager</b>. You will be overseeing key enterprise accounts on dcwideweb.online. Let\'s kick off the Q3 account review planning soon!' },
+          { type: 'date', text: 'TODAY' },
+          { author: 'Elena Rostova', title: 'Legal Counsel', color: '#7c3aed', time: '10:14 AM', text: 'Hi team, I\'ve reviewed the Master Services Agreement (MSA) for the Apex Global renewal. The compliance clause on page 14 has been updated.', file: { name: 'ApexGlobal_MSA_Renewal_v3.pdf', size: '2.4 MB', type: 'PDF' } },
+          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '10:30 AM', text: 'Server migration specs for dcwideweb.online cluster have been compiled. Here is the technical overview document.', file: { name: 'Infrastructure_Cost_Projection_Q3.xlsx', size: '1.1 MB', type: 'XLSX' } }
+        ]
+      },
+      'global-expansion': {
+        title: '# global-expansion',
+        desc: 'APAC & EMEA Market Penetration & Licensing Roadmap',
+        messages: [
+          { type: 'date', text: 'YESTERDAY' },
+          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '02:15 PM', text: 'Our Tokyo infrastructure setup is now 80% complete. Senior Account Managers should start preparing pitch decks for local partners.' },
+          { author: 'Marcus Vance', title: 'Finance Director', color: '#d97706', time: '04:00 PM', text: 'APAC Q3 budget allocations are finalized. Please review the breakdown before submitting vendor requests.', file: { name: 'APAC_Q3_Budget_Allocation.pdf', size: '4.2 MB', type: 'PDF' } }
+        ]
+      },
+      'general-announcements': {
+        title: '# general-announcements',
+        desc: 'Company-wide news, HR updates & policy notices',
+        messages: [
+          { type: 'date', text: 'AUGUST 1, 2026' },
+          { author: 'HR Operations', title: 'Admin', color: '#dc2626', time: '09:00 AM', text: 'Reminder: All Q3 expense reports must be submitted through the enterprise portal by end of week.' },
+          { author: 'HR Operations', title: 'Admin', color: '#dc2626', time: '09:05 AM', text: 'Please download the updated Remote Work & Security Policy handbook below.', file: { name: 'DCWIDEWEB_Employee_Handbook_2026.pdf', size: '5.8 MB', type: 'PDF' } }
+        ]
+      },
+      'tech-support': {
+        title: '# tech-support',
+        desc: 'Internal IT helpdesk, access control & system status',
+        messages: [
+          { type: 'date', text: 'TODAY' },
+          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '08:30 AM', text: 'Scheduled maintenance on dcwideweb.online primary node completed with zero downtime. All systems nominal.' }
+        ]
+      },
+      'dm-sarah': {
+        title: '🔒 Direct Message with Sarah Jenkins',
+        desc: 'VP Sales • Direct Channel',
+        messages: [
+          { type: 'date', text: 'TODAY' },
+          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '09:00 AM', text: 'Hey, do you have 10 mins this afternoon to jump on a quick call regarding the enterprise account renewal?' }
+        ]
+      },
+      'dm-david': {
+        title: '🔒 Direct Message with David Chen',
+        desc: 'Lead Architect • Direct Channel',
+        messages: [
+          { type: 'date', text: 'YESTERDAY' },
+          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '05:20 PM', text: 'API endpoints for the new account dashboard are live on staging. Let me know if you need test credentials.' }
+        ]
+      },
+      'dm-elena': {
+        title: '🔒 Direct Message with Elena Rostova',
+        desc: 'Legal Counsel • Direct Channel',
+        messages: [
+          { type: 'date', text: 'TODAY' },
+          { author: 'Elena Rostova', title: 'Legal Counsel', color: '#7c3aed', time: '08:45 AM', text: 'I received the countersigned NDA from the client. Everything looks good on our side.' }
+        ]
+      }
+    };
+
+    let currentChannelKey = 'client-accounts-q3';
+
+    function switchChannel(channelKey, element) {
+      currentChannelKey = channelKey;
+      
+      // 切換選單 Active 樣式
       document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('active'));
-      event.currentTarget.classList.add('active');
-      document.getElementById('currentChannelTitle').innerHTML = `<i class="fa-solid fa-hashtag" style="color: #64748b;"></i> ${id}`;
-      document.getElementById('currentChannelDesc').innerText = desc;
-      document.getElementById('msgInput').placeholder = `發送訊息至 ${name}... (Enter 發送)`;
+      element.classList.add('active');
+
+      // 清除未讀 Badge
+      const badge = element.querySelector('.badge');
+      if (badge) badge.remove();
+
+      // 渲染對話標題與內容
+      const data = channelData[channelKey];
+      document.getElementById('channelTitle').innerText = data.title;
+      document.getElementById('channelDesc').innerText = data.desc;
+      document.getElementById('chatInput').placeholder = `Message ${data.title}...`;
+
+      renderMessages();
     }
 
-    // 發送訊息與模擬互動
-    function sendMessage() {
-      const input = document.getElementById('msgInput');
+    function renderMessages() {
+      const history = document.getElementById('chatHistory');
+      history.innerHTML = '';
+      const data = channelData[currentChannelKey];
+
+      data.messages.forEach(msg => {
+        if (msg.type === 'date') {
+          history.insertAdjacentHTML('beforeend', `<div class="date-separator"><span>${msg.text}</span></div>`);
+        } else {
+          let fileHtml = '';
+          if (msg.file) {
+            fileHtml = `
+              <div class="file-attachment">
+                <div class="file-icon">${msg.file.type}</div>
+                <div class="file-details">
+                  <div class="file-name">${msg.file.name}</div>
+                  <div class="file-meta">${msg.file.size} • ${msg.file.type} File</div>
+                </div>
+                <a class="file-download" onclick="alert('Downloading ${msg.file.name}...')">Download</a>
+              </div>
+            `;
+          }
+
+          const initials = msg.author === 'You' ? 'SAM' : msg.author.split(' ').map(n=>n[0]).join('');
+          const msgHtml = `
+            <div class="message-group">
+              <div class="msg-avatar" style="background-color: ${msg.color};">${initials}</div>
+              <div class="msg-body">
+                <div class="msg-meta">
+                  <span class="msg-author">${msg.author}</span>
+                  <span class="msg-title">${msg.title}</span>
+                  <span class="msg-time">${msg.time}</span>
+                </div>
+                <div class="msg-text">
+                  ${msg.text}
+                  ${fileHtml}
+                </div>
+              </div>
+            </div>
+          `;
+          history.insertAdjacentHTML('beforeend', msgHtml);
+        }
+      });
+      history.scrollTop = history.scrollHeight;
+    }
+
+    function handleSend() {
+      const input = document.getElementById('chatInput');
       const text = input.value.trim();
       if (!text) return;
 
-      const history = document.getElementById('messageHistory');
       const now = new Date();
       const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-      // 使用者發送訊息 (Senior Account Manager 身份)
-      const userMsgHtml = `
-        <div class="message-group self">
-          <div class="avatar" style="background-color: #0284c7;">我</div>
-          <div class="message-content">
-            <div class="message-info">
-              <span class="author">Alex</span>
-              <span class="role-badge">Senior Account Manager</span>
-              <span class="timestamp">${timeStr}</span>
-            </div>
-            <div class="text">${escapeHtml(text)}</div>
-          </div>
-        </div>
-      `;
-      history.insertAdjacentHTML('beforeend', userMsgHtml);
-      input.value = '';
-      history.scrollTop = history.scrollHeight;
+      // 將使用者發送的訊息推入當前頻道資料庫
+      channelData[currentChannelKey].messages.push({
+        author: 'You',
+        title: 'Senior Account Manager',
+        color: '#0284c7',
+        time: timeStr,
+        text: escapeHtml(text)
+      });
 
-      // 模擬團隊自動回覆
+      input.value = '';
+      renderMessages();
+
+      // 自動回覆模擬
       setTimeout(() => {
         const autoReplies = [
-          "收到，這部分我等一下跟團隊確認！",
-          "沒問題 Alex，我會把這項更新同步到 dcwideweb.online 的專案看板上。",
-          "感謝 Alex 協調！客戶那邊有任何技術問題随時轉告我們。",
-          "太棒了！這項進度對我們 AM 團隊 Q3 的 KPI 有很大幫助！"
+          { author: "Sarah Jenkins", title: "VP Sales", color: "#0284c7", text: "Got it! Thanks for the quick update.", file: { name: "Q3_Account_Summary.pdf", size: "3.8 MB", type: "PDF" } },
+          { author: "Elena Rostova", title: "Legal Counsel", color: "#7c3aed", text: "Acknowledged. Logging this into our compliance system.", file: { name: "Addendum_Approved.docx", size: "840 KB", type: "DOCX" } }
         ];
-        const randomReply = autoReplies[Math.floor(Math.random() * autoReplies.length)];
+        const reply = autoReplies[Math.floor(Math.random() * autoReplies.length)];
+        reply.time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-        const botMsgHtml = `
-          <div class="message-group">
-            <div class="avatar" style="background-color: #8b5cf6;">張</div>
-            <div class="message-content">
-              <div class="message-info">
-                <span class="author">張總監</span>
-                <span class="role-badge">Managing Director</span>
-                <span class="timestamp">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-              </div>
-              <div class="text">${randomReply}</div>
-            </div>
-          </div>
-        `;
-        history.insertAdjacentHTML('beforeend', botMsgHtml);
-        history.scrollTop = history.scrollHeight;
-      }, 1400);
+        channelData[currentChannelKey].messages.push(reply);
+        renderMessages();
+      }, 1300);
     }
 
-    // Enter 鍵發送
-    document.getElementById('msgInput').addEventListener('keydown', function(e) {
+    function triggerFileUpload(type) {
+      const fileName = type === 'Document' ? 'DCWIDEWEB_Q3_Client_Review.pdf' : 'Account_Metrics_Q3.xlsx';
+      const input = document.getElementById('chatInput');
+      input.value += ` [Attached File: ${fileName}]`;
+    }
+
+    document.getElementById('chatInput').addEventListener('keydown', function(e) {
       if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
-        sendMessage();
+        handleSend();
       }
     });
 
-    function escapeHtml(string) {
-      return String(string).replace(/[&<>"']/g, function (s) {
-        return {
-          '&': '&amp;',
-          '<': '&lt;',
-          '>': '&gt;',
-          '"': '&quot;',
-          "'": '&#39;'
-        }[s];
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, function (s) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[s];
       });
     }
+
+    // 初始化載入
+    renderMessages();
   </script>
 </body>
 </html>
-```
