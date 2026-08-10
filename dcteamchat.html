@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>DCTeamChat - Enterprise Connect</title>
   <style>
     * {
@@ -10,23 +10,67 @@
       margin: 0;
       padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
       display: flex;
       height: 100vh;
+      height: 100dvh;
       background-color: #0f172a;
       color: #e2e8f0;
       overflow: hidden;
+      position: relative;
     }
 
-    /* Sidebar */
+    /* 頂部手機導覽列 Navigation Bar for Mobile */
+    .mobile-nav {
+      display: none;
+      height: 50px;
+      background-color: #1e293b;
+      border-bottom: 1px solid #334155;
+      padding: 0 16px;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+    }
+
+    .mobile-menu-btn {
+      background: none;
+      border: none;
+      color: #38bdf8;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .mobile-brand {
+      font-weight: 700;
+      color: #f8fafc;
+      font-size: 15px;
+    }
+
+    /* 遮罩，點擊收起手機側邊欄 */
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.6);
+      z-index: 199;
+    }
+
+    /* Sidebar 側邊欄 */
     .sidebar {
-      width: 320px;
+      width: 310px;
       background-color: #1e293b;
       border-right: 1px solid #334155;
       display: flex;
       flex-direction: column;
+      z-index: 200;
+      transition: transform 0.3s ease;
     }
 
     .brand-header {
@@ -115,7 +159,7 @@
     }
 
     .menu-item {
-      padding: 8px 20px;
+      padding: 10px 20px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -163,20 +207,22 @@
       display: flex;
       flex-direction: column;
       background-color: #0f172a;
+      height: 100%;
     }
 
     .chat-header {
-      height: 64px;
+      height: 60px;
       border-bottom: 1px solid #334155;
-      padding: 0 24px;
+      padding: 0 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       background-color: #1e293b;
+      flex-shrink: 0;
     }
 
     .channel-info h2 {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
       color: #f8fafc;
       display: flex;
@@ -185,21 +231,21 @@
     }
 
     .channel-info p {
-      font-size: 12px;
+      font-size: 11px;
       color: #94a3b8;
       margin-top: 2px;
     }
 
     .header-actions {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       font-size: 13px;
       color: #94a3b8;
     }
 
     .message-history {
       flex: 1;
-      padding: 24px;
+      padding: 16px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
@@ -213,7 +259,7 @@
       color: #64748b;
       font-size: 11px;
       font-weight: 600;
-      margin: 12px 0 6px 0;
+      margin: 10px 0 4px 0;
     }
     .date-separator::before, .date-separator::after {
       content: '';
@@ -221,14 +267,15 @@
       border-bottom: 1px solid #1e293b;
     }
     .date-separator span {
-      padding: 0 12px;
+      padding: 0 10px;
       background-color: #0f172a;
     }
 
+    /* Message Bubble Styles */
     .message-group {
       display: flex;
-      gap: 12px;
-      max-width: 800px;
+      gap: 10px;
+      max-width: 85%;
     }
 
     .message-group.others {
@@ -252,18 +299,18 @@
       background-color: #0284c7;
       color: #ffffff;
       border-color: #0369a1;
-      border-radius: 8px 0 8px 8px;
+      border-radius: 12px 2px 12px 12px;
     }
 
     .msg-avatar {
-      width: 36px;
-      height: 36px;
+      width: 34px;
+      height: 34px;
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 13px;
+      font-size: 12px;
       color: #fff;
       flex-shrink: 0;
     }
@@ -276,37 +323,38 @@
     .msg-meta {
       display: flex;
       align-items: baseline;
-      gap: 8px;
+      gap: 6px;
       margin-bottom: 3px;
     }
 
     .msg-author {
-      font-size: 13.5px;
+      font-size: 12.5px;
       font-weight: 600;
       color: #f8fafc;
     }
 
     .msg-title {
-      font-size: 10.5px;
+      font-size: 10px;
       color: #38bdf8;
       background: rgba(56, 189, 248, 0.1);
-      padding: 1px 5px;
+      padding: 1px 4px;
       border-radius: 4px;
     }
 
     .msg-time {
-      font-size: 11px;
+      font-size: 10.5px;
       color: #64748b;
     }
 
     .msg-text {
       font-size: 13px;
       color: #cbd5e1;
-      line-height: 1.45;
+      line-height: 1.4;
       background-color: #1e293b;
       padding: 8px 12px;
-      border-radius: 0 8px 8px 8px;
+      border-radius: 2px 12px 12px 12px;
       border: 1px solid #334155;
+      word-break: break-word;
     }
 
     .file-attachment {
@@ -314,16 +362,16 @@
       background-color: #0f172a;
       border: 1px solid #334155;
       border-radius: 6px;
-      padding: 8px 12px;
+      padding: 8px 10px;
       display: flex;
       align-items: center;
       gap: 10px;
-      width: 320px;
+      max-width: 100%;
     }
 
     .file-icon {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       border-radius: 4px;
       background-color: rgba(2, 132, 199, 0.2);
       color: #38bdf8;
@@ -331,7 +379,8 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 10px;
+      font-size: 9.5px;
+      flex-shrink: 0;
     }
 
     .file-details {
@@ -340,7 +389,7 @@
     }
 
     .file-name {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 600;
       color: #f1f5f9;
       white-space: nowrap;
@@ -349,15 +398,16 @@
     }
 
     .file-meta {
-      font-size: 10px;
+      font-size: 9.5px;
       color: #64748b;
     }
 
     .file-download {
       color: #38bdf8;
-      font-size: 11px;
+      font-size: 10.5px;
       cursor: pointer;
       font-weight: 600;
+      flex-shrink: 0;
     }
 
     .empty-state {
@@ -367,30 +417,32 @@
       justify-content: center;
       height: 100%;
       color: #64748b;
-      font-size: 14px;
+      font-size: 13px;
     }
 
+    /* Input Area */
     .input-wrapper {
-      padding: 16px 24px;
+      padding: 12px 16px;
       background-color: #1e293b;
       border-top: 1px solid #334155;
+      flex-shrink: 0;
     }
 
     .input-box {
       background-color: #0f172a;
       border: 1px solid #334155;
       border-radius: 10px;
-      padding: 10px;
+      padding: 8px 10px;
     }
 
     textarea {
       width: 100%;
-      height: 48px;
+      height: 40px;
       background: transparent;
       border: none;
       outline: none;
       resize: none;
-      font-size: 13.5px;
+      font-size: 13px;
       color: #f8fafc;
     }
 
@@ -402,14 +454,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 6px;
-      padding-top: 6px;
+      margin-top: 4px;
+      padding-top: 4px;
       border-top: 1px solid #1e293b;
     }
 
     .tool-btns {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       color: #94a3b8;
       font-size: 12px;
       cursor: pointer;
@@ -419,27 +471,80 @@
       background-color: #0284c7;
       color: white;
       border: none;
-      padding: 6px 16px;
+      padding: 5px 14px;
       border-radius: 6px;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 600;
       cursor: pointer;
+    }
+
+    /* 手機端 RWD 響應式優化 Media Queries */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+
+      .sidebar-overlay.show {
+        display: block;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        transform: translateX(-100%);
+        box-shadow: 4px 0 15px rgba(0,0,0,0.5);
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .message-group {
+        max-width: 90%;
+      }
+
+      .header-actions span:not(:first-child) {
+        display: none;
+      }
+
+      .channel-info p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 220px;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- 手機版頂部 Header -->
+  <div class="mobile-nav">
+    <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+    <div class="mobile-brand">DCTeamChat</div>
+    <div class="status-online" title="Operational"></div>
+  </div>
+
+  <!-- 手機側邊欄遮罩 -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
   <!-- 企業 SSO 假登入遮罩 -->
   <div id="loginOverlay" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:#0f172a; z-index:9999; display:flex; align-items:center; justify-content:center; color:#fff;">
-    <div style="background:#1e293b; padding:32px; border-radius:12px; border:1px solid #334155; width:350px; text-align:center; box-shadow:0 20px 25px -5px rgba(0,0,0,0.5);">
-      <h3 style="margin-bottom:6px; color:#38bdf8; font-size:20px;">DCTeamChat</h3>
-      <p style="font-size:12px; color:#94a3b8; margin-bottom:20px;">Enterprise SSO Authentication Required</p>
+    <div style="background:#1e293b; padding:28px 24px; border-radius:12px; border:1px solid #334155; width:88%; max-width:340px; text-align:center; box-shadow:0 20px 25px -5px rgba(0,0,0,0.5);">
+      <h3 style="margin-bottom:6px; color:#38bdf8; font-size:19px;">DCTeamChat</h3>
+      <p style="font-size:11.5px; color:#94a3b8; margin-bottom:18px;">Enterprise SSO Authentication Required</p>
       
-      <input type="text" id="userInput" placeholder="Enterprise ID / Email" style="width:100%; padding:10px; margin-bottom:12px; background:#0f172a; border:1px solid #334155; border-radius:6px; color:#fff; font-size:13px; outline:none;">
-      <input type="password" id="passInput" placeholder="Password" style="width:100%; padding:10px; margin-bottom:18px; background:#0f172a; border:1px solid #334155; border-radius:6px; color:#fff; font-size:13px; outline:none;">
+      <input type="text" id="userInput" placeholder="Enterprise ID / Email" style="width:100%; padding:10px; margin-bottom:10px; background:#0f172a; border:1px solid #334155; border-radius:6px; color:#fff; font-size:13px; outline:none;">
+      <input type="password" id="passInput" placeholder="Password" style="width:100%; padding:10px; margin-bottom:16px; background:#0f172a; border:1px solid #334155; border-radius:6px; color:#fff; font-size:13px; outline:none;">
       
       <button onclick="checkLogin()" style="width:100%; padding:10px; background:#0284c7; color:#fff; border:none; border-radius:6px; font-weight:600; cursor:pointer; font-size:13px;">Sign In via Okta / SSO</button>
-      <p id="errorMsg" style="color:#ef4444; font-size:12px; margin-top:12px; display:none;">Invalid credentials or unauthorized device.</p>
+      <p id="errorMsg" style="color:#ef4444; font-size:11.5px; margin-top:10px; display:none;">Invalid credentials or unauthorized device.</p>
     </div>
   </div>
 
@@ -448,8 +553,8 @@
       const user = document.getElementById('userInput').value;
       const pass = document.getElementById('passInput').value;
       
-      // 可以修改為你自己想設定的帳號密碼（預設：admin / 1234）
-      if(user === 'admin' && pass === '1234') {
+      // 更改為帳號: king / 密碼: 1234
+      if(user === 'king' && pass === '1234') {
         document.getElementById('loginOverlay').style.display = 'none';
       } else {
         document.getElementById('errorMsg').style.display = 'block';
@@ -458,7 +563,7 @@
   </script>
 
   <!-- Sidebar -->
-  <div class="sidebar">
+  <div class="sidebar" id="sidebar">
     <div class="brand-header">
       <div>
         <div>DCTeamChat</div>
@@ -608,10 +713,9 @@
         <textarea id="chatInput" placeholder="Send a message..."></textarea>
         <div class="input-toolbar">
           <div class="tool-btns">
-            <span class="tool-btn" onclick="triggerFileUpload('Document')">📎 Attach File</span>
-            <span class="tool-btn" onclick="triggerFileUpload('Report')">📊 Insert Metric</span>
+            <span class="tool-btn" onclick="triggerFileUpload('Document')">📎 Attach</span>
+            <span class="tool-btn" onclick="triggerFileUpload('Report')">📊 Metric</span>
             <span class="tool-btn">🙂 Emoji</span>
-            <span class="tool-btn">@ Mention</span>
           </div>
           <button class="send-btn" onclick="handleSend()">Send</button>
         </div>
@@ -620,6 +724,11 @@
   </div>
 
   <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+      document.getElementById('sidebarOverlay').classList.toggle('show');
+    }
+
     const channelData = {
       'client-accounts-q3': {
         title: '# client-accounts-q3',
@@ -870,6 +979,12 @@
       
       document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('active'));
       element.classList.add('active');
+
+      // 手機切換頻道後自動收起側邊欄
+      if (window.innerWidth <= 768) {
+        document.getElementById('sidebar').classList.remove('open');
+        document.getElementById('sidebarOverlay').classList.remove('show');
+      }
 
       const badge = element.querySelector('.badge');
       if (badge) badge.remove();
