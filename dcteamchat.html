@@ -22,7 +22,7 @@
 
     /* Sidebar */
     .sidebar {
-      width: 310px;
+      width: 320px;
       background-color: #1e293b;
       border-right: 1px solid #334155;
       display: flex;
@@ -115,7 +115,7 @@
     }
 
     .menu-item {
-      padding: 9px 20px;
+      padding: 8px 20px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -225,10 +225,37 @@
       background-color: #0f172a;
     }
 
+    /* Message Item Alignment */
     .message-group {
       display: flex;
       gap: 12px;
-      max-width: 900px;
+      max-width: 800px;
+    }
+
+    /* 他人的發言 (靠左) */
+    .message-group.others {
+      align-self: flex-start;
+    }
+
+    /* 我的發言 (靠右) */
+    .message-group.self {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    .message-group.self .msg-body {
+      align-items: flex-end;
+    }
+
+    .message-group.self .msg-meta {
+      flex-direction: row-reverse;
+    }
+
+    .message-group.self .msg-text {
+      background-color: #0284c7;
+      color: #ffffff;
+      border-color: #0369a1;
+      border-radius: 8px 0 8px 8px;
     }
 
     .msg-avatar {
@@ -336,6 +363,16 @@
       font-weight: 600;
     }
 
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: #64748b;
+      font-size: 14px;
+    }
+
     .input-wrapper {
       padding: 16px 24px;
       background-color: #1e293b;
@@ -416,7 +453,8 @@
     </div>
 
     <div class="menu-list">
-      <div class="sidebar-section">Channels</div>
+      <div class="sidebar-section">Active Channels</div>
+      <!-- 原有 6 個 Channel -->
       <div class="menu-item active" onclick="switchChannel('client-accounts-q3', this)">
         <span># client-accounts-q3</span>
         <span class="badge">12</span>
@@ -437,8 +475,34 @@
       <div class="menu-item" onclick="switchChannel('philippines-hq-ops', this)">
         <span># philippines-hq-ops</span>
       </div>
+      <!-- 新增 2 個有內容的 Channel -->
+      <div class="menu-item" onclick="switchChannel('crossborder-logistics-api', this)">
+        <span># crossborder-logistics-api</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('vip-merchant-desk', this)">
+        <span># vip-merchant-desk</span>
+      </div>
+
+      <div class="sidebar-section">Archived Channels</div>
+      <!-- 新增 5 個空 Channel -->
+      <div class="menu-item" onclick="switchChannel('empty-channel-1', this)">
+        <span># devops-ci-cd-pipeline</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('empty-channel-2', this)">
+        <span># 2025-q4-strategy</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('empty-channel-3', this)">
+        <span># internal-hackathon</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('empty-channel-4', this)">
+        <span># legal-compliance-archive</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('empty-channel-5', this)">
+        <span># merchant-promotions-lab</span>
+      </div>
 
       <div class="sidebar-section">Direct Messages</div>
+      <!-- 包含原本 3 位 + 新增 10 位，含中文且大部分為灰色 (離線) -->
       <div class="menu-item" onclick="switchChannel('dm-sarah', this)">
         <span class="presence-dot dot-green"></span>
         <span>Sarah Jenkins (VP Sales)</span>
@@ -450,6 +514,46 @@
       <div class="menu-item" onclick="switchChannel('dm-elena', this)">
         <span class="presence-dot dot-green"></span>
         <span>Elena Rostova (Legal Counsel)</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('dm-generic', this)">
+        <span class="presence-dot dot-green"></span>
+        <span>張志強 Alex Zhang (Head of Ops)</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('dm-generic', this)">
+        <span class="presence-dot dot-gray"></span>
+        <span>陳美玲 May Chen (Senior Designer)</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('dm-generic', this)">
+        <span class="presence-dot dot-gray"></span>
+        <span>王大衛 David Wang (BI Analyst)</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('dm-generic', this)">
+        <span class="presence-dot dot-gray"></span>
+        <span>Markus Vance (Finance Director)</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('dm-generic', this)">
+        <span class="presence-dot dot-gray"></span>
+        <span>Isabella Santos (Account Lead)</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('dm-generic', this)">
+        <span class="presence-dot dot-gray"></span>
+        <span>林小婷 Tina Lin (Product Manager)</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('dm-generic', this)">
+        <span class="presence-dot dot-gray"></span>
+        <span>John Mark (Logistics Coordinator)</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('dm-generic', this)">
+        <span class="presence-dot dot-gray"></span>
+        <span>黃建國 Ken Huang (QA Lead)</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('dm-generic', this)">
+        <span class="presence-dot dot-gray"></span>
+        <span>Chloe Reyes (Merchant Success)</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('dm-generic', this)">
+        <span class="presence-dot dot-gray"></span>
+        <span>Paolo Dela Cruz (Security Officer)</span>
       </div>
     </div>
   </div>
@@ -521,6 +625,21 @@
         desc: 'Makati Office Facilities, HR & Admin Support',
         messages: generateChatMessages('philippines-hq-ops')
       },
+      'crossborder-logistics-api': {
+        title: '# crossborder-logistics-api',
+        desc: 'Custom Fulfillment Hooks, Customs Clearance & Freight Tracker',
+        messages: generateChatMessages('crossborder-logistics-api')
+      },
+      'vip-merchant-desk': {
+        title: '# vip-merchant-desk',
+        desc: 'Tier-1 High Volume Sellers Technical Support & Priority Esculations',
+        messages: generateChatMessages('vip-merchant-desk')
+      },
+      'empty-channel-1': { title: '# devops-ci-cd-pipeline', desc: 'Deployment pipelines', messages: [] },
+      'empty-channel-2': { title: '# 2025-q4-strategy', desc: 'Q4 strategic roadmap', messages: [] },
+      'empty-channel-3': { title: '# internal-hackathon', desc: 'Project submissions', messages: [] },
+      'empty-channel-4': { title: '# legal-compliance-archive', desc: 'Archived NDAs', messages: [] },
+      'empty-channel-5': { title: '# merchant-promotions-lab', desc: 'Campaign tests', messages: [] },
       'dm-sarah': {
         title: '🔒 Direct Message with Sarah Jenkins',
         desc: 'VP Sales • Direct Channel',
@@ -546,6 +665,15 @@
           { type: 'date', text: 'AUG 08, 2026' },
           { author: 'Elena Rostova', title: 'Legal Counsel', color: '#7c3aed', time: '11:30 AM', text: 'Apex signed the NDA amendment. Sending the PDF over.' , file: { name: 'Apex_Signed_Ecom_NDA_2026.pdf', size: '1.4 MB', type: 'PDF' } },
           { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '11:32 AM', text: 'Awesome! Thanks Elena, super fast as always.' }
+        ]
+      },
+      'dm-generic': {
+        title: '🔒 Direct Message',
+        desc: 'Private Channel',
+        messages: [
+          { type: 'date', text: 'AUG 07, 2026' },
+          { author: 'Alex Zhang', title: 'Head of Ops', color: '#2563eb', time: '04:00 PM', text: 'Hey, thanks for syncing up on the Manila merchant rollout today.' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '04:05 PM', text: 'Anytime Alex! Let me know if you need additional reports.' }
         ]
       }
     };
@@ -615,20 +743,10 @@
           { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '09:40 AM', text: 'Updated to v3 API. Token refresh is fully automated now.' },
           { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '09:42 AM', text: 'Great, no more manual re-auth required for merchants 👍' },
           { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '09:45 AM', text: 'This will save our support team so many tickets.' },
-          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '09:48 AM', text: '100%!' },
-          { type: 'date', text: 'AUG 09, 2026' },
-          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '01:15 PM', text: 'Refactored backend architecture blueprint updated.', file: { name: 'DCWIDEWEB_Backend_Spec_v5.pdf', size: '3.8 MB', type: 'PDF' } },
-          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '01:20 PM', text: 'Got it. Forwarding to CloudMart technical team.' },
-          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '01:22 PM', text: 'Their Lead Dev wanted to review the Redis caching layer.' },
-          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '01:25 PM', text: 'Tell him page 12 covers the Redis cluster config.' },
-          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '01:27 PM', text: 'Perfect, will do!' },
-          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '01:30 PM', text: 'Let me know if he wants a tech sync call.' },
-          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '01:32 PM', text: 'Will let you know after he replies.' },
-          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '04:00 PM', text: 'He said specs look clean! No call needed for now.' },
-          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '04:05 PM', text: 'Sweet! One less meeting today haha.' }
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '09:48 AM', text: '100%!' }
         ];
       } else {
-        const genericMsgs = [
+        return [
           { type: 'date', text: 'JUL 16, 2026' },
           { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '09:00 AM', text: 'Morning guys! Any blocker for this channel today?' },
           { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '09:05 AM', text: 'All good on my end! Following up on client specs.' },
@@ -647,20 +765,13 @@
           { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '02:05 PM', text: 'Got it Sarah.' },
           { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '02:10 PM', text: 'Will join.' },
           { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '02:12 PM', text: 'Preparing notes now.' },
-          { author: 'Marcus Vance', title: 'Finance Director', color: '#d97706', time: '02:15 PM', text: 'Attending as well.' },
           { type: 'date', text: 'AUG 07, 2026' },
           { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '10:00 AM', text: 'Merchant feedback is very positive!' },
           { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '10:05 AM', text: 'Awesome news!' },
           { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '10:10 AM', text: 'They liked the fast order processing speed.' },
           { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '10:15 AM', text: 'Kudos to backend dev team!' },
-          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '10:18 AM', text: 'Great job everyone 👍' },
-          { author: 'Elena Rostova', title: 'Legal Counsel', color: '#7c3aed', time: '10:20 AM', text: 'Updated terms document uploaded.', file: { name: 'Approved_Agreement_v2.docx', size: '850 KB', type: 'DOCX' } },
-          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '10:25 AM', text: 'Received and saved!' },
-          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '04:00 PM', text: 'Have a good evening team!' },
-          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '04:05 PM', text: 'See you all tomorrow!' },
-          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '04:10 PM', text: 'Bye everyone!' }
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '10:18 AM', text: 'Great job everyone 👍' }
         ];
-        return genericMsgs;
       }
     }
 
@@ -688,6 +799,17 @@
       history.innerHTML = '';
       const data = channelData[currentChannelKey];
 
+      if (!data.messages || data.messages.length === 0) {
+        history.innerHTML = `
+          <div class="empty-state">
+            <div style="font-size: 32px; margin-bottom: 10px;">💬</div>
+            <div style="font-weight: 600; color: #f8fafc; margin-bottom: 4px;">Welcome to ${data.title}</div>
+            <div>This channel is quiet right now. Start the conversation!</div>
+          </div>
+        `;
+        return;
+      }
+
       data.messages.forEach(msg => {
         if (msg.type === 'date') {
           history.insertAdjacentHTML('beforeend', `<div class="date-separator"><span>${msg.text}</span></div>`);
@@ -706,9 +828,12 @@
             `;
           }
 
-          const initials = msg.author === 'You' ? 'SAM' : msg.author.split(' ').map(n=>n[0]).join('');
+          const isSelf = msg.author === 'You';
+          const alignClass = isSelf ? 'self' : 'others';
+          const initials = isSelf ? 'SAM' : msg.author.split(' ').map(n=>n[0]).join('');
+
           const msgHtml = `
-            <div class="message-group">
+            <div class="message-group ${alignClass}">
               <div class="msg-avatar" style="background-color: ${msg.color};">${initials}</div>
               <div class="msg-body">
                 <div class="msg-meta">
@@ -736,6 +861,10 @@
 
       const now = new Date();
       const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      if (!channelData[currentChannelKey].messages) {
+        channelData[currentChannelKey].messages = [];
+      }
 
       channelData[currentChannelKey].messages.push({
         author: 'You',
