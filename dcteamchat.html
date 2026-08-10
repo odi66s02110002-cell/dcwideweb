@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexus Hub - 企業內部通訊</title>
+  <title>DC Wide Web - 企業內部工作空間 (dcwideweb.online)</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       box-sizing: border-box;
@@ -15,126 +16,278 @@
     body {
       display: flex;
       height: 100vh;
-      background-color: #f4f5f7;
-      color: #172b4d;
+      background-color: #0f172a;
+      color: #334155;
+      overflow: hidden;
     }
 
     /* 側邊欄 Sidebar */
     .sidebar {
-      width: 260px;
-      background-color: #1e2229;
-      color: #9ba1a6;
+      width: 280px;
+      background-color: #1e293b;
+      color: #94a3b8;
       display: flex;
       flex-direction: column;
+      border-right: 1px solid #334155;
     }
 
     .workspace-header {
-      padding: 16px;
-      font-size: 16px;
-      font-weight: bold;
-      color: #ffffff;
-      border-bottom: 1px solid #2d323b;
+      padding: 16px 20px;
+      background-color: #0f172a;
+      border-bottom: 1px solid #334155;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .status-badge {
-      width: 8px;
-      height: 8px;
-      background-color: #36b37e;
-      border-radius: 50%;
+    .brand-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #f8fafc;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .section-title {
-      padding: 16px 16px 8px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: #6b7280;
+    .brand-badge {
+      font-size: 10px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      color: #fff;
+      padding: 2px 6px;
+      border-radius: 4px;
       font-weight: 600;
     }
 
+    .domain-tag {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    .section-title {
+      padding: 18px 20px 6px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #64748b;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     .menu-item {
-      padding: 8px 16px;
+      padding: 9px 20px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       cursor: pointer;
       font-size: 14px;
+      transition: all 0.2s;
       border-left: 3px solid transparent;
+      color: #cbd5e1;
     }
 
     .menu-item:hover {
-      background-color: #2a2f38;
-      color: #e5e7eb;
+      background-color: #334155;
+      color: #f8fafc;
     }
 
     .menu-item.active {
-      background-color: #2d333d;
-      color: #ffffff;
-      border-left-color: #3b82f6;
-      font-weight: 500;
+      background-color: #334155;
+      color: #38bdf8;
+      border-left-color: #38bdf8;
+      font-weight: 600;
+    }
+
+    .badge-count {
+      margin-left: auto;
+      background-color: #ef4444;
+      color: white;
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-weight: bold;
     }
 
     .user-status {
       width: 8px;
       height: 8px;
       border-radius: 50%;
+      flex-shrink: 0;
     }
 
     .online { background-color: #10b981; }
-    .offline { background-color: #6b7280; }
-    .busy { background-color: #ef4444; }
+    .busy { background-color: #f59e0b; }
+    .offline { background-color: #64748b; }
 
-    /* 主對話區域 Main Content */
+    /* 個人資料卡片（側欄底部） */
+    .user-profile-card {
+      margin-top: auto;
+      padding: 16px;
+      background-color: #0f172a;
+      border-top: 1px solid #334155;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .user-avatar-main {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .user-details {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .user-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f8fafc;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .user-role {
+      font-size: 11px;
+      color: #38bdf8;
+      font-weight: 500;
+    }
+
+    .user-joined {
+      font-size: 10px;
+      color: #64748b;
+      margin-top: 1px;
+    }
+
+    /* 主區域 Main Area */
     .chat-area {
       flex: 1;
       display: flex;
       flex-direction: column;
-      background-color: #ffffff;
+      background-color: #f8fafc;
     }
 
+    /* 頁首 Header */
     .chat-header {
-      height: 56px;
-      border-bottom: 1px solid #e5e7eb;
-      padding: 0 20px;
+      height: 64px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 0 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .header-info {
+      display: flex;
+      flex-direction: column;
     }
 
     .channel-title {
-      font-size: 16px;
-      font-weight: 600;
-      color: #111827;
+      font-size: 17px;
+      font-weight: 700;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .channel-desc {
       font-size: 12px;
-      color: #6b7280;
+      color: #64748b;
       margin-top: 2px;
     }
 
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .search-box {
+      background-color: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 20px;
+      padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #64748b;
+      width: 220px;
+    }
+
+    .search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+      width: 100%;
+      font-size: 12px;
+    }
+
+    /* 訊息紀錄區 */
     .message-history {
       flex: 1;
-      padding: 20px;
+      padding: 24px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 20px;
+      background-color: #f8fafc;
+    }
+
+    .date-divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 11px;
+      font-weight: 600;
+      margin: 10px 0;
+    }
+
+    .date-divider::before, .date-divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .date-divider span {
+      padding: 0 12px;
+      background: #f8fafc;
     }
 
     .message-group {
       display: flex;
-      gap: 12px;
+      gap: 14px;
+      max-width: 85%;
+    }
+
+    .message-group.self {
+      align-self: flex-end;
+      flex-direction: row-reverse;
     }
 
     .avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background-color: #3b82f6;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
       color: white;
       display: flex;
       align-items: center;
@@ -142,11 +295,16 @@
       font-weight: bold;
       font-size: 14px;
       flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
 
     .message-content {
       display: flex;
       flex-direction: column;
+    }
+
+    .message-group.self .message-content {
+      align-items: flex-end;
     }
 
     .message-info {
@@ -157,81 +315,150 @@
     }
 
     .author {
-      font-size: 14px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .role-badge {
+      font-size: 10px;
+      background-color: #e0f2fe;
+      color: #0369a1;
+      padding: 1px 6px;
+      border-radius: 4px;
       font-weight: 600;
-      color: #1f2937;
     }
 
     .timestamp {
       font-size: 11px;
-      color: #9ca3af;
+      color: #94a3b8;
     }
 
     .text {
       font-size: 14px;
-      color: #374151;
-      line-height: 1.5;
-      background-color: #f9fafb;
-      padding: 8px 12px;
-      border-radius: 0 8px 8px 8px;
-      border: 1px solid #f3f4f6;
-      max-width: 600px;
+      color: #334155;
+      line-height: 1.6;
+      background-color: #ffffff;
+      padding: 12px 16px;
+      border-radius: 0 12px 12px 12px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
     }
 
-    /* 輸入框 Input Container */
+    .message-group.self .text {
+      background-color: #0284c7;
+      color: #ffffff;
+      border-color: #0284c7;
+      border-radius: 12px 0 12px 12px;
+    }
+
+    /* 附件與專案卡片 */
+    .attachment-card {
+      margin-top: 8px;
+      background-color: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: max-content;
+      max-width: 100%;
+    }
+
+    .attachment-icon {
+      font-size: 24px;
+      color: #0284c7;
+    }
+
+    .attachment-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .attachment-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    .attachment-size {
+      font-size: 11px;
+      color: #64748b;
+    }
+
+    /* 輸入區 */
     .input-container {
-      padding: 16px 20px;
-      border-top: 1px solid #e5e7eb;
+      padding: 16px 24px 20px;
+      background-color: #ffffff;
+      border-top: 1px solid #e2e8f0;
     }
 
     .input-box {
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      padding: 8px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 12px;
       background-color: #ffffff;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      transition: border-color 0.2s;
+    }
+
+    .input-box:focus-within {
+      border-color: #0284c7;
     }
 
     textarea {
       width: 100%;
-      height: 48px;
+      height: 52px;
       border: none;
       outline: none;
       resize: none;
       font-size: 14px;
-      color: #1f2937;
+      color: #0f172a;
     }
 
     .toolbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 4px;
-      padding-top: 4px;
-      border-top: 1px solid #f3f4f6;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid #f1f5f9;
     }
 
     .actions {
       display: flex;
-      gap: 12px;
-      color: #6b7280;
-      font-size: 13px;
+      gap: 16px;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .actions i {
       cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .actions i:hover {
+      color: #0284c7;
     }
 
     .send-btn {
-      background-color: #2563eb;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
       color: white;
       border: none;
-      padding: 6px 14px;
-      border-radius: 6px;
+      padding: 8px 18px;
+      border-radius: 8px;
       font-size: 13px;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 4px rgba(2, 132, 199, 0.3);
     }
 
     .send-btn:hover {
-      background-color: #1d4ed8;
+      opacity: 0.95;
     }
   </style>
 </head>
@@ -240,94 +467,189 @@
   <!-- 側邊欄 -->
   <div class="sidebar">
     <div class="workspace-header">
-      <span>TechCorp 內部網</span>
-      <div class="status-badge" title="網絡已連接"></div>
+      <div>
+        <div class="brand-title">
+          <i class="fa-solid fa-globe"></i> DC Wide Web
+          <span class="brand-badge">PRO</span>
+        </div>
+        <div class="domain-tag">dcwideweb.online</div>
+      </div>
+      <i class="fa-solid fa-sliders" style="color: #64748b; cursor: pointer;"></i>
     </div>
 
-    <div class="section-title">頻道列表</div>
-    <div class="menu-item"># 00_公告欄</div>
-    <div class="menu-item active"># proj_alpha研發</div>
-    <div class="menu-item"># general_閒聊</div>
-    <div class="menu-item"># it_技術支援</div>
+    <div class="section-title">
+      <span>頻道列表 (Channels)</span>
+      <i class="fa-solid fa-plus" style="cursor: pointer;"></i>
+    </div>
+    <div class="menu-item active" onclick="switchChannel('client-dcwide-web', '# client-dcwide-web', '專案客戶：DC Wide Web 官網重構與營運維護')">
+      <i class="fa-solid fa-hashtag"></i>
+      <span>client-dcwide-web</span>
+      <span class="badge-count">3</span>
+    </div>
+    <div class="menu-item" onclick="switchChannel('account-management', '# account-management', '大客戶客情維護、續約談判與季度 QBR')">
+      <i class="fa-solid fa-hashtag"></i>
+      <span>account-management</span>
+    </div>
+    <div class="menu-item" onclick="switchChannel('design-dev-sync', '# design-dev-sync', '跨部門設計與工程交付同步討論')">
+      <i class="fa-solid fa-hashtag"></i>
+      <span>design-dev-sync</span>
+    </div>
+    <div class="menu-item" onclick="switchChannel('announcements', '# 00_公司重要公告', '全公司政策、HR 資訊與業績達標公告')">
+      <i class="fa-solid fa-bullhorn"></i>
+      <span>00_公司重要公告</span>
+    </div>
 
-    <div class="section-title">私人訊息</div>
+    <div class="section-title">
+      <span>私人訊息 (Direct Messages)</span>
+    </div>
     <div class="menu-item">
       <span class="user-status online"></span>
-      <span>張經理 (Manager)</span>
+      <span>張總監 (Managing Director)</span>
     </div>
     <div class="menu-item">
       <span class="user-status busy"></span>
-      <span>陳工程師 (Dev)</span>
+      <span>Kevin (Lead Engineer)</span>
+    </div>
+    <div class="menu-item">
+      <span class="user-status online"></span>
+      <span>Jessica (UI/UX Lead)</span>
     </div>
     <div class="menu-item">
       <span class="user-status offline"></span>
-      <span>李設計師 (UI/UX)</span>
+      <span>Finance Team (財務組)</span>
+    </div>
+
+    <!-- 個人身份卡片 -->
+    <div class="user-profile-card">
+      <div class="user-avatar-main">我</div>
+      <div class="user-details">
+        <div class="user-name">Alex (Me)</div>
+        <div class="user-role">Senior Account Manager</div>
+        <div class="user-joined"><i class="fa-regular fa-calendar-check"></i> 入職: 2025年5月 (資歷 1年+)</div>
+      </div>
     </div>
   </div>
 
-  <!-- 對話區域 -->
+  <!-- 主對話區域 -->
   <div class="chat-area">
+    <!-- 頁首 -->
     <div class="chat-header">
-      <div>
-        <div class="channel-title"># proj_alpha研發</div>
-        <div class="channel-desc">成員：8 人 | Alpha 專案專用討論頻道</div>
+      <div class="header-info">
+        <div class="channel-title" id="currentChannelTitle">
+          <i class="fa-solid fa-hashtag" style="color: #64748b;"></i> client-dcwide-web
+        </div>
+        <div class="channel-desc" id="currentChannelDesc">專案客戶：DC Wide Web 官網重構與營運維護 (dcwideweb.online)</div>
+      </div>
+
+      <div class="header-actions">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="搜尋 dcwideweb 對話與檔案...">
+        </div>
+        <i class="fa-solid fa-user-group" style="color: #64748b; cursor: pointer;" title="成員列表 (12)"></i>
+        <i class="fa-solid fa-pin" style="color: #64748b; cursor: pointer;" title="置頂訊息"></i>
       </div>
     </div>
 
+    <!-- 訊息區域 -->
     <div class="message-history" id="messageHistory">
-      <!-- 歷史模擬訊息 -->
+
+      <div class="date-divider">
+        <span>2025 年 05 月 12 日（Alex 入職首月紀錄）</span>
+      </div>
+
       <div class="message-group">
         <div class="avatar" style="background-color: #8b5cf6;">張</div>
         <div class="message-content">
           <div class="message-info">
-            <span class="author">張經理</span>
-            <span class="timestamp">09:30 AM</span>
+            <span class="author">張總監</span>
+            <span class="role-badge">Managing Director</span>
+            <span class="timestamp">2025/05/12 10:00 AM</span>
           </div>
-          <div class="text">各位同仁，今天下午 2 點將進行 Q3 專案進度審查會議，請大家提前準備好簡報檔。</div>
+          <div class="text">歡迎 Alex 加入 DC Wide Web 團隊！擔任我們的 Senior Account Manager。這一年 dcwideweb.online 的重點客戶維護與新營運合約就交給你帶領 AM 團隊了！</div>
+        </div>
+      </div>
+
+      <div class="date-divider">
+        <span>今天 (Today)</span>
+      </div>
+
+      <div class="message-group">
+        <div class="avatar" style="background-color: #f59e0b;">K</div>
+        <div class="message-content">
+          <div class="message-info">
+            <span class="author">Kevin</span>
+            <span class="role-badge">Lead Engineer</span>
+            <span class="timestamp">09:45 AM</span>
+          </div>
+          <div class="text">@Alex 早安！dcwideweb.online 的新伺服器擴充與網域 SSL 憑證已更新完畢，目前運行順暢。客戶那邊對上週上線的 Client Portal 測試滿意嗎？</div>
+        </div>
+      </div>
+
+      <div class="message-group self">
+        <div class="avatar" style="background-color: #0284c7;">我</div>
+        <div class="message-content">
+          <div class="message-info">
+            <span class="author">Alex</span>
+            <span class="role-badge">Senior Account Manager</span>
+            <span class="timestamp">09:50 AM</span>
+          </div>
+          <div class="text">早！客戶昨天回饋非常滿意！從上年 5 月我接手 dcwideweb.online 這個帳戶至今，續約率順利達到 100%。他們剛剛已經批准了 Q3 階段的維護加值合約提案！🎉</div>
+          
+          <div class="attachment-card">
+            <i class="fa-solid fa-file-pdf attachment-icon"></i>
+            <div class="attachment-details">
+              <span class="attachment-name">DCWideWeb_Q3_Retainer_Signed.pdf</span>
+              <span class="attachment-size">2.4 MB • 雙方已完成簽署</span>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="message-group">
-        <div class="avatar" style="background-color: #10b981;">李</div>
+        <div class="avatar" style="background-color: #ec4899;">J</div>
         <div class="message-content">
           <div class="message-info">
-            <span class="author">李設計師</span>
-            <span class="timestamp">09:42 AM</span>
+            <span class="author">Jessica</span>
+            <span class="role-badge">UI/UX Lead</span>
+            <span class="timestamp">10:02 AM</span>
           </div>
-          <div class="text">UI 切圖和設計規範已經更新至 Figma，請參閱。</div>
+          <div class="text">太讚了！Alex 效率超高！我已經把 dcwideweb.online 下一季度的品牌視覺規範（Design System v2.1）準備好了，有需要隨時跟我拿。</div>
         </div>
       </div>
 
-      <div class="message-group">
-        <div class="avatar" style="background-color: #f59e0b;">陳</div>
-        <div class="message-content">
-          <div class="message-info">
-            <span class="author">陳工程師</span>
-            <span class="timestamp">10:05 AM</span>
-          </div>
-          <div class="text">收到，後端 API 測試環境已部署完畢，主要端點運作正常。</div>
-        </div>
-      </div>
     </div>
 
-    <!-- 輸入框區域 -->
+    <!-- 輸入框 -->
     <div class="input-container">
       <div class="input-box">
-        <textarea id="msgInput" placeholder="發送訊息至 # proj_alpha研發..."></textarea>
+        <textarea id="msgInput" placeholder="發送訊息至 # client-dcwide-web... (Enter 發送)"></textarea>
         <div class="toolbar">
           <div class="actions">
-            <span>📎 附件</span>
-            <span>🙂 表情</span>
-            <span>@ 提及</span>
+            <i class="fa-solid fa-paperclip" title="夾帶檔案"></i>
+            <i class="fa-solid fa-face-smile" title="插入表情符号"></i>
+            <i class="fa-solid fa-at" title="提及同事"></i>
+            <i class="fa-solid fa-code" title="插入程式碼"></i>
           </div>
-          <button class="send-btn" onclick="sendMessage()">發送</button>
+          <button class="send-btn" onclick="sendMessage()">
+            發送 <i class="fa-solid fa-paper-plane"></i>
+          </button>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    // 裝模作樣的本地發送與自動回覆效果
+    // 切換頻道功能 (模擬)
+    function switchChannel(id, name, desc) {
+      document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      document.getElementById('currentChannelTitle').innerHTML = `<i class="fa-solid fa-hashtag" style="color: #64748b;"></i> ${id}`;
+      document.getElementById('currentChannelDesc').innerText = desc;
+      document.getElementById('msgInput').placeholder = `發送訊息至 ${name}... (Enter 發送)`;
+    }
+
+    // 發送訊息與模擬互動
     function sendMessage() {
       const input = document.getElementById('msgInput');
       const text = input.value.trim();
@@ -337,13 +659,14 @@
       const now = new Date();
       const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-      // 新增使用者發送的訊息
+      // 使用者發送訊息 (Senior Account Manager 身份)
       const userMsgHtml = `
-        <div class="message-group">
-          <div class="avatar" style="background-color: #3b82f6;">我</div>
+        <div class="message-group self">
+          <div class="avatar" style="background-color: #0284c7;">我</div>
           <div class="message-content">
             <div class="message-info">
-              <span class="author">我</span>
+              <span class="author">Alex</span>
+              <span class="role-badge">Senior Account Manager</span>
               <span class="timestamp">${timeStr}</span>
             </div>
             <div class="text">${escapeHtml(text)}</div>
@@ -354,22 +677,23 @@
       input.value = '';
       history.scrollTop = history.scrollHeight;
 
-      // 1.5 秒後模擬同事自動回覆
+      // 模擬團隊自動回覆
       setTimeout(() => {
-        const replies = [
-          "收到，這部分我等等處理。",
-          "了解，感謝更新！",
-          "好的，稍後開會討論。",
-          "收到訊息，晚點給您回覆。"
+        const autoReplies = [
+          "收到，這部分我等一下跟團隊確認！",
+          "沒問題 Alex，我會把這項更新同步到 dcwideweb.online 的專案看板上。",
+          "感謝 Alex 協調！客戶那邊有任何技術問題随時轉告我們。",
+          "太棒了！這項進度對我們 AM 團隊 Q3 的 KPI 有很大幫助！"
         ];
-        const randomReply = replies[Math.floor(Math.random() * replies.length)];
+        const randomReply = autoReplies[Math.floor(Math.random() * autoReplies.length)];
 
         const botMsgHtml = `
           <div class="message-group">
-            <div class="avatar" style="background-color: #f59e0b;">陳</div>
+            <div class="avatar" style="background-color: #8b5cf6;">張</div>
             <div class="message-content">
               <div class="message-info">
-                <span class="author">陳工程師</span>
+                <span class="author">張總監</span>
+                <span class="role-badge">Managing Director</span>
                 <span class="timestamp">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
               </div>
               <div class="text">${randomReply}</div>
@@ -378,10 +702,10 @@
         `;
         history.insertAdjacentHTML('beforeend', botMsgHtml);
         history.scrollTop = history.scrollHeight;
-      }, 1500);
+      }, 1400);
     }
 
-    // 支援 Enter 鍵直接發送
+    // Enter 鍵發送
     document.getElementById('msgInput').addEventListener('keydown', function(e) {
       if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
@@ -403,3 +727,4 @@
   </script>
 </body>
 </html>
+```
