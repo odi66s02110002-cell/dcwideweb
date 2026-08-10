@@ -429,7 +429,33 @@
   </style>
 </head>
 <body>
+<!-- 登入遮罩面板 -->
+<div id="loginOverlay" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:#0f172a; z-index:9999; display:flex; align-items:center; justify-content:center; color:#fff;">
+  <div style="background:#1e293b; padding:30px; border-radius:12px; border:1px solid #334155; width:340px; text-align:center; box-shadow:0 20px 25px -5px rgba(0,0,0,0.5);">
+    <h3 style="margin-bottom:8px; color:#38bdf8;">DCTeamChat</h3>
+    <p style="font-size:12px; color:#94a3b8; margin-bottom:20px;">Enterprise SSO Authentication Required</p>
+    
+    <input type="text" id="userInput" placeholder="Enterprise ID / Email" style="width:100%; padding:10px; margin-bottom:10px; background:#0f172a; border:1px solid #334155; border-radius:6px; color:#fff; font-size:13px; outline:none;">
+    <input type="password" id="passInput" placeholder="Password" style="width:100%; padding:10px; margin-bottom:15px; background:#0f172a; border:1px solid #334155; border-radius:6px; color:#fff; font-size:13px; outline:none;">
+    
+    <button onclick="checkLogin()" style="width:100%; padding:10px; background:#0284c7; color:#fff; border:none; border-radius:6px; font-weight:600; cursor:pointer;">Sign In via Okta / SSO</button>
+    <p id="errorMsg" style="color:#ef4444; font-size:12px; margin-top:10px; display:none;">Invalid credentials or unauthorized device.</p>
+  </div>
+</div>
 
+<script>
+  function checkLogin() {
+    const user = document.getElementById('userInput').value;
+    const pass = document.getElementById('passInput').value;
+    
+    // 你可以設定一組只有你自己知道的密碼（例如：user: king / pass: 1234）
+    if(user === 'king' && pass === '1234') {
+      document.getElementById('loginOverlay').style.display = 'none';
+    } else {
+      document.getElementById('errorMsg').style.display = 'block';
+    }
+  }
+</script>
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="brand-header">
