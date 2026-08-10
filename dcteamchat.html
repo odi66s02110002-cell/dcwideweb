@@ -22,7 +22,7 @@
 
     /* Sidebar */
     .sidebar {
-      width: 290px;
+      width: 310px;
       background-color: #1e293b;
       border-right: 1px solid #334155;
       display: flex;
@@ -285,7 +285,6 @@
       border: 1px solid #334155;
     }
 
-    /* File Card Attachment */
     .file-attachment {
       margin-top: 8px;
       background-color: #0f172a;
@@ -344,7 +343,6 @@
       cursor: pointer;
     }
 
-    /* Input Area */
     .input-wrapper {
       padding: 18px 24px;
       background-color: #1e293b;
@@ -417,10 +415,10 @@
   <div class="sidebar">
     <div class="brand-header">
       <div>
-        <div>DCWIDEWEB</div>
-        <div class="domain">dcwideweb.online</div>
+        <div>DCWIDEWEB PH</div>
+        <div class="domain">dcwideweb.online • Manila HQ</div>
       </div>
-      <div class="status-online" title="System Operational"></div>
+      <div class="status-online" title="Manila Server Operational"></div>
     </div>
 
     <!-- User Profile Badge -->
@@ -429,7 +427,7 @@
       <div class="user-info">
         <div class="user-name">You</div>
         <div class="user-role">Senior Account Manager</div>
-        <div class="user-tenure">Member since May 2025</div>
+        <div class="user-tenure">Makati City • Member since May 2025</div>
       </div>
     </div>
 
@@ -438,6 +436,22 @@
       <div class="menu-item active" onclick="switchChannel('client-accounts-q3', this)">
         <span># client-accounts-q3</span>
         <span class="badge">5</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('ecom-backend-architecture', this)">
+        <span># ecom-backend-architecture</span>
+        <span class="badge">3</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('payment-gateway-integrations', this)">
+        <span># payment-gateway-integrations</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('oms-inventory-sync', this)">
+        <span># oms-inventory-sync</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('sea-merchant-onboarding', this)">
+        <span># sea-merchant-onboarding</span>
+      </div>
+      <div class="menu-item" onclick="switchChannel('philippines-hq-ops', this)">
+        <span># philippines-hq-ops</span>
       </div>
       <div class="menu-item" onclick="switchChannel('global-expansion', this)">
         <span># global-expansion</span>
@@ -470,7 +484,7 @@
     <div class="chat-header">
       <div class="channel-info">
         <h2 id="channelTitle"># client-accounts-q3</h2>
-        <p id="channelDesc">DCWIDEWEB Enterprise Portfolio & Account Strategy Channel</p>
+        <p id="channelDesc">DCWIDEWEB Enterprise E-commerce Merchant Portfolio</p>
       </div>
       <div class="header-actions">
         <span>🔍 Search</span>
@@ -480,7 +494,7 @@
     </div>
 
     <div class="message-history" id="chatHistory">
-      <!-- 內容將由 JavaScript 動態切換與渲染 -->
+      <!-- Dynamic JS Content -->
     </div>
 
     <!-- Input Bar -->
@@ -501,99 +515,135 @@
   </div>
 
   <script>
-    // 擴充大量真實感濃厚的對話資料庫
     const channelData = {
       'client-accounts-q3': {
         title: '# client-accounts-q3',
-        desc: 'DCWIDEWEB Enterprise Portfolio & Account Strategy Channel',
+        desc: 'DCWIDEWEB Enterprise E-commerce Merchant Portfolio & Account Strategy',
         messages: [
-          { type: 'date', text: 'MAY 12, 2025 — Welcome Onboard' },
-          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: 'May 12, 2025 09:15 AM', text: 'Welcome to the team! Glad to have you joining us as <b>Senior Account Manager</b>. You will be overseeing key enterprise accounts on dcwideweb.online. Let\'s kick off the Q3 account review planning soon!' },
-          { type: 'date', text: 'JUNE 28, 2025 — Q3 Kickoff' },
-          { author: 'Marcus Vance', title: 'Finance Director', color: '#d97706', time: '11:05 AM', text: 'All key account revenue targets for Q3 are now synced into Salesforce. Please check your assigned tier-1 client targets.' },
-          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '11:20 AM', text: 'Thanks Marcus. I have reviewed the target matrix. The 18% expansion goal for Apex Global looks achievable given their recent tech stack upgrades.' },
+          { type: 'date', text: 'MAY 12, 2025 — Welcome Onboard Manila HQ' },
+          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: 'May 12, 2025 09:15 AM', text: 'Welcome to our Manila operations hub! Glad to have you joining us as <b>Senior Account Manager</b>. You will be overseeing our tier-1 e-commerce merchants building custom admin panels and multi-channel backends on dcwideweb.online.' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: 'May 12, 2025 09:30 AM', text: 'Thanks Sarah! Excited to join the PH team. I'm reviewing our key e-commerce merchant pipelines right now.' },
+          { type: 'date', text: 'JUNE 28, 2025 — Q3 Merchant Review' },
+          { author: 'Marcus Vance', title: 'Finance Director', color: '#d97706', time: '11:05 AM', text: 'All e-commerce backend licensing and revenue targets for Q3 are synced. Please review the merchant tiering matrix.' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '11:20 AM', text: 'Reviewed! The 22% ARR expansion goal for MetroMart Retail's custom admin dashboard looks solid. We're adding 3 new regional warehouse modules.' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '11:22 AM', text: 'Also, Lazada and Shopee multi-store API connectors are driving higher retention for our mid-market sellers.' },
           { type: 'date', text: 'YESTERDAY' },
-          { author: 'Elena Rostova', title: 'Legal Counsel', color: '#7c3aed', time: '03:14 PM', text: 'Hi team, I\'ve finalized the Master Services Agreement (MSA) revision for Apex Global. The SLA guarantees and compliance terms on page 14 have been updated.', file: { name: 'ApexGlobal_MSA_Renewal_v3.pdf', size: '2.4 MB', type: 'PDF' } },
-          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '03:45 PM', text: 'Awesome, thanks Elena. I will present this amended draft during tomorrow\'s executive alignment call with Apex\'s CTO.' },
-          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '04:10 PM', text: 'Also, server migration specs for dcwideweb.online cluster have been compiled. Here is the technical cost projection document.', file: { name: 'Infrastructure_Cost_Projection_Q3.xlsx', size: '1.1 MB', type: 'XLSX' } },
+          { author: 'Elena Rostova', title: 'Legal Counsel', color: '#7c3aed', time: '03:14 PM', text: 'Hi team, MSA revision for Apex Retail Group is finalized. The e-commerce backend uptime SLA (99.95%) and payment gateway liability terms are updated.', file: { name: 'ApexRetail_Ecom_Backend_MSA_v3.pdf', size: '2.8 MB', type: 'PDF' } },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '03:45 PM', text: 'Perfect timing Elena! I'll present this draft in our 4:00 PM call with Apex's CTO. Their biggest priority is high-volume order processing during Double 11 sales.' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '03:48 PM', text: 'I'll also clarify that our backend order engine can easily sustain up to 15,000 requests per minute without throttling.' },
+          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '04:10 PM', text: 'Specs for dcwideweb e-commerce cluster expansion are attached. Peak traffic load tests passed.', file: { name: 'Ecom_Cluster_LoadTest_Q3.xlsx', size: '1.4 MB', type: 'XLSX' } },
           { type: 'date', text: 'TODAY' },
-          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '09:30 AM', text: 'Quick reminder: Enterprise Client Status Sync is scheduled for 2:00 PM today. Make sure to update your pipeline deals.' },
-          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '09:42 AM', text: 'All account decks are up to date. I\'ll be covering the $120k upsell pipeline for CloudSync Corp as well.' },
-          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '10:05 AM', text: 'Staging environment for CloudSync\'s custom deployment is ready for client UAT. Here is the credential brief.', file: { name: 'CloudSync_UAT_Deployment_Brief.docx', size: '920 KB', type: 'DOCX' } }
+          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '09:30 AM', text: 'Reminder: SEA Merchant Status Sync is at 2:00 PM today. Make sure order engine integration deals are updated.' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '09:42 AM', text: 'All set Sarah! I will present the $140k backend migration deal for CloudMart PH, plus 2 upsell proposals for automated inventory reconciliations.' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '09:45 AM', text: 'David's team already pre-configured their staging admin portal, so client UAT should be smooth.' },
+          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '10:05 AM', text: 'Staging environment for CloudMart's custom admin backend is live. Credentials attached.', file: { name: 'CloudMart_Ecom_Admin_UAT.docx', size: '920 KB', type: 'DOCX' } }
+        ]
+      },
+      'ecom-backend-architecture': {
+        title: '# ecom-backend-architecture',
+        desc: 'Custom Merchant Admin Panels, Microservices & Core Order Engine',
+        messages: [
+          { type: 'date', text: 'YESTERDAY' },
+          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '02:00 PM', text: 'We just refactored our e-commerce product catalog microservice. Merchant admin dashboard loading times dropped by 40%.' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '02:15 PM', text: 'That's huge news for our tier-1 clients! SukiShop's catalog team has over 500,000 SKUs and was complaining about admin latency.' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '02:18 PM', text: 'Can we roll this UI optimization out to their production admin portal this Thursday?' },
+          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '02:30 PM', text: 'Yes, Thursday 2:00 AM Manila time during low-traffic window works.' },
+          { type: 'date', text: 'TODAY' },
+          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '10:15 AM', text: 'Updated backend architecture blueprint attached for high-scale merchant clients.', file: { name: 'DCWIDEWEB_Ecom_Backend_v4.pdf', size: '5.2 MB', type: 'PDF' } }
+        ]
+      },
+      'payment-gateway-integrations': {
+        title: '# payment-gateway-integrations',
+        desc: 'GCash, Maya, Credit Cards, PayPal & Regional Payment Pipelines',
+        messages: [
+          { type: 'date', text: 'YESTERDAY' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '04:00 PM', text: 'Quick query for payment team: RetailPlus PH is asking if our e-commerce backend supports dual automated refunds for GCash and credit card channels?' },
+          { author: 'Elena Rostova', title: 'Legal Counsel', color: '#7c3aed', time: '04:15 PM', text: 'From compliance side, automated refund hooks are permitted as long as transaction reconciliation logs are retained for 7 years per BSP rules.' },
+          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '04:30 PM', text: 'Technical answer is yes! Our payment service webhooks automatically handle multi-channel refunds directly in the merchant admin panel.' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '04:40 PM', text: 'Awesome! Adding this to RetailPlus's backend feature agreement sheet right now.' }
+        ]
+      },
+      'oms-inventory-sync': {
+        title: '# oms-inventory-sync',
+        desc: 'Real-time Stock Control, Multi-Warehouse & Logistics API Hooks',
+        messages: [
+          { type: 'date', text: 'TODAY' },
+          { author: 'Marcus Vance', title: 'Finance Director', color: '#d97706', time: '08:30 AM', text: 'Lalamove and NinjaVan API carrier usage costs for our merchant backends went up 12% last month.' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '08:50 AM', text: 'I'll talk to our top 5 merchants about switching to our consolidated 3PL API tier. That should reduce per-label dispatch costs for everyone.' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '08:55 AM', text: 'I've already prepared a comparative breakdown for our logistics connector modules.', file: { name: 'Ecom_3PL_Logistics_Cost_Comparison.xlsx', size: '1.2 MB', type: 'XLSX' } }
+        ]
+      },
+      'sea-merchant-onboarding': {
+        title: '# sea-merchant-onboarding',
+        desc: 'New Enterprise Seller Setup & Custom Back-Office Training',
+        messages: [
+          { type: 'date', text: 'TODAY' },
+          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '11:00 AM', text: 'We have 4 new enterprise merchants onboarding in Manila and Cebu this week.' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '11:15 AM', text: 'I'll take point on the Manila accounts. Setting up their admin dashboard permissions and bulk order processing workflows tomorrow morning.' }
+        ]
+      },
+      'philippines-hq-ops': {
+        title: '# philippines-hq-ops',
+        desc: 'Makati Office Facilities, Local HR, Holidays & Administrative Support',
+        messages: [
+          { type: 'date', text: 'TODAY' },
+          { author: 'HR Operations', title: 'Admin', color: '#dc2626', time: '09:00 AM', text: 'Friendly reminder: Metro Manila office local holiday schedule for next month is posted.' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '09:20 AM', text: 'Noted HR! Account management team will ensure client emergency technical coverage is scheduled for off-duty days.' }
         ]
       },
       'global-expansion': {
         title: '# global-expansion',
-        desc: 'APAC & EMEA Market Penetration & Licensing Roadmap',
+        desc: 'APAC & EMEA Market Penetration & E-commerce Licensing Roadmap',
         messages: [
-          { type: 'date', text: 'JULY 15, 2025' },
-          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '10:00 AM', text: 'We are officially initiating Phase 2 of our APAC expansion program. Tokyo & Singapore nodes are now active.' },
           { type: 'date', text: 'YESTERDAY' },
-          { author: 'Marcus Vance', title: 'Finance Director', color: '#d97706', time: '02:15 PM', text: 'APAC Q3 budget allocations are finalized. Please review the regional breakdown before submitting vendor requests.', file: { name: 'APAC_Q3_Budget_Allocation.pdf', size: '4.2 MB', type: 'PDF' } },
-          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '02:50 PM', text: 'Received. Are the localization agency retainer fees included under line item 4B?' },
-          { author: 'Marcus Vance', title: 'Finance Director', color: '#d97706', time: '03:05 PM', text: 'Yes, line item 4B covers all APAC localization and translation contracts.' },
-          { type: 'date', text: 'TODAY' },
-          { author: 'Elena Rostova', title: 'Legal Counsel', color: '#7c3aed', time: '11:20 AM', text: 'Cross-border data transfer compliance checklists for Japan (APPI) and EU (GDPR) have been attached.', file: { name: 'Global_Data_Compliance_Checklist.pdf', size: '1.8 MB', type: 'PDF' } }
+          { author: 'Marcus Vance', title: 'Finance Director', color: '#d97706', time: '02:15 PM', text: 'APAC Q3 budget allocations are finalized. Regional breakdown attached.', file: { name: 'APAC_Q3_Budget_Allocation.pdf', size: '4.2 MB', type: 'PDF' } },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '02:50 PM', text: 'Received. Are the e-commerce localization retainer fees for Thailand & Vietnam backends included under line item 4B?' },
+          { author: 'Marcus Vance', title: 'Finance Director', color: '#d97706', time: '03:05 PM', text: 'Yes, line item 4B covers all regional currency and language admin panel translations.' }
         ]
       },
       'general-announcements': {
         title: '# general-announcements',
         desc: 'Company-wide news, HR updates & policy notices',
         messages: [
-          { type: 'date', text: 'MAY 1, 2025' },
-          { author: 'HR Operations', title: 'Admin', color: '#dc2626', time: '09:00 AM', text: 'Welcome to Q2! Please review the updated company benefits and expense reimbursement guidelines in the portal.' },
-          { type: 'date', text: 'JULY 01, 2025' },
-          { author: 'IT Helpdesk', title: 'Admin', color: '#dc2626', time: '10:00 AM', text: 'Mandatory SSO Security Upgrade: All employees must re-authenticate via Okta 2FA by Friday.' },
           { type: 'date', text: 'TODAY' },
-          { author: 'HR Operations', title: 'Admin', color: '#dc2626', time: '09:00 AM', text: 'Reminder: All Q3 enterprise expense reports must be submitted through the portal by end of week.' },
-          { author: 'HR Operations', title: 'Admin', color: '#dc2626', time: '09:05 AM', text: 'Please download the updated Remote Work & Security Policy handbook below.', file: { name: 'DCWIDEWEB_Employee_Handbook_2026.pdf', size: '5.8 MB', type: 'PDF' } }
+          { author: 'HR Operations', title: 'Admin', color: '#dc2626', time: '09:00 AM', text: 'Reminder: All Q3 enterprise merchant expense reports must be submitted through the portal by Friday.' },
+          { author: 'HR Operations', title: 'Admin', color: '#dc2626', time: '09:05 AM', text: 'Download updated Remote Work & Security Policy handbook below.', file: { name: 'DCWIDEWEB_Employee_Handbook_2026.pdf', size: '5.8 MB', type: 'PDF' } }
         ]
       },
       'tech-support': {
         title: '# tech-support',
-        desc: 'Internal IT helpdesk, access control & system status',
+        desc: 'Internal IT helpdesk, access control & server status',
         messages: [
-          { type: 'date', text: 'YESTERDAY' },
-          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '01:15 PM', text: 'Hi IT team, I need elevated portal access to download client traffic telemetry logs for Apex Global.' },
-          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '01:30 PM', text: 'Access granted. Your role has been updated in IAM. You should see the Telemetry tab now.' },
           { type: 'date', text: 'TODAY' },
-          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '08:30 AM', text: 'Scheduled maintenance on dcwideweb.online primary node completed with zero downtime. All systems nominal.', file: { name: 'Server_Health_Metrics_Report.pdf', size: '3.1 MB', type: 'PDF' } }
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '01:15 PM', text: 'Hi IT team, I need elevated portal access to download merchant transaction telemetry logs for Apex Retail.' },
+          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '01:30 PM', text: 'Access granted. Your IAM role has been updated. Telemetry tab is visible now.' }
         ]
       },
       'dm-sarah': {
         title: '🔒 Direct Message with Sarah Jenkins',
         desc: 'VP Sales • Direct Channel',
         messages: [
-          { type: 'date', text: 'MAY 15, 2025' },
-          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '02:00 PM', text: 'Great performance on the client onboarding session this morning!' },
-          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '02:10 PM', text: 'Thanks Sarah! The team worked hard to streamline the migration process.' },
-          { type: 'date', text: 'YESTERDAY' },
-          { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '04:45 PM', text: 'Here is the draft Q3 commission & bonus structure for senior account leads.', file: { name: 'Q3_Sales_Commission_Structure.xlsx', size: '650 KB', type: 'XLSX' } },
           { type: 'date', text: 'TODAY' },
           { author: 'Sarah Jenkins', title: 'VP Sales', color: '#0284c7', time: '09:00 AM', text: 'Hey, do you have 10 mins this afternoon to jump on a quick call regarding the enterprise account renewal?' },
-          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '09:12 AM', text: 'Sure thing! How about 3:30 PM right after the general review sync?' }
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '09:12 AM', text: 'Sure Sarah! How about 3:30 PM right after the general merchant review sync? I can run through the custom backend renewal terms then.' }
         ]
       },
       'dm-david': {
         title: '🔒 Direct Message with David Chen',
         desc: 'Lead Architect • Direct Channel',
         messages: [
-          { type: 'date', text: 'JULY 20, 2025' },
-          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '11:30 AM', text: 'Hey, the client requested a custom API integration report for their security audit. Here it is.', file: { name: 'API_Security_Audit_Report.pdf', size: '2.9 MB', type: 'PDF' } },
-          { type: 'date', text: 'YESTERDAY' },
-          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '05:20 PM', text: 'API endpoints for the new account dashboard are live on staging. Let me know if you need test credentials.' },
-          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '05:35 PM', text: 'Will test it out tonight. Thanks David!' }
+          { type: 'date', text: 'TODAY' },
+          { author: 'David Chen', title: 'Lead Architect', color: '#059669', time: '05:20 PM', text: 'API endpoints for the new e-commerce admin dashboard are live on staging.' },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '05:35 PM', text: 'Awesome David! I'll log in tonight to test the inventory batch update module before showing it to the client tomorrow.' }
         ]
       },
       'dm-elena': {
         title: '🔒 Direct Message with Elena Rostova',
         desc: 'Legal Counsel • Direct Channel',
         messages: [
-          { type: 'date', text: 'YESTERDAY' },
-          { author: 'Elena Rostova', title: 'Legal Counsel', color: '#7c3aed', time: '03:00 PM', text: 'I\'ve reviewed the redlined NDA sent by the client\'s legal department.' },
           { type: 'date', text: 'TODAY' },
-          { author: 'Elena Rostova', title: 'Legal Counsel', color: '#7c3aed', time: '08:45 AM', text: 'Good news! I received the countersigned NDA from the client. Everything looks good on our side.', file: { name: 'Apex_Signed_NDA_Executed.pdf', size: '1.5 MB', type: 'PDF' } },
-          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '08:50 AM', text: 'Perfect! Moving them to the final contract stage now.' }
+          { author: 'Elena Rostova', title: 'Legal Counsel', color: '#7c3aed', time: '08:45 AM', text: 'Countersigned NDA received from the merchant legal team.', file: { name: 'Apex_Signed_Ecom_NDA.pdf', size: '1.5 MB', type: 'PDF' } },
+          { author: 'You', title: 'Senior Account Manager', color: '#0284c7', time: '08:50 AM', text: 'Thanks Elena! Moving them straight to final backend architecture scoping now.' }
         ]
       }
     };
@@ -684,9 +734,9 @@
 
       setTimeout(() => {
         const autoReplies = [
-          { author: "Sarah Jenkins", title: "VP Sales", color: "#0284c7", text: "Got it! Thanks for the quick update. I'll share this with the leadership team.", file: { name: "Q3_Account_Summary.pdf", size: "3.8 MB", type: "PDF" } },
-          { author: "Elena Rostova", title: "Legal Counsel", color: "#7c3aed", text: "Acknowledged. Logging this into our compliance system.", file: { name: "Addendum_Approved.docx", size: "840 KB", type: "DOCX" } },
-          { author: "David Chen", title: "Lead Architect", color: "#059669", text: "Thanks for the feedback! I've updated the deployment roadmap accordingly.", file: { name: "System_Architecture_v4.xlsx", size: "1.4 MB", type: "XLSX" } }
+          { author: "Sarah Jenkins", title: "VP Sales", color: "#0284c7", text: "Thanks for the update! I'll share this with the Manila executive committee.", file: { name: "PH_Ecom_Merchant_Pipeline.pdf", size: "3.2 MB", type: "PDF" } },
+          { author: "Elena Rostova", title: "Legal Counsel", color: "#7c3aed", text: "Logged into our BSP e-commerce compliance portal.", file: { name: "Ecom_Gateway_Terms_Approved.docx", size: "780 KB", type: "DOCX" } },
+          { author: "David Chen", title: "Lead Architect", color: "#059669", text: "I've updated the backend API deployment schedule for this merchant.", file: { name: "Backend_API_Roadmap_v5.xlsx", size: "1.6 MB", type: "XLSX" } }
         ];
         const reply = autoReplies[Math.floor(Math.random() * autoReplies.length)];
         reply.time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -697,7 +747,7 @@
     }
 
     function triggerFileUpload(type) {
-      const fileName = type === 'Document' ? 'DCWIDEWEB_Q3_Client_Review.pdf' : 'Account_Metrics_Q3.xlsx';
+      const fileName = type === 'Document' ? 'DCWIDEWEB_Ecom_Backend_Proposal.pdf' : 'Merchant_Order_Metrics.xlsx';
       const input = document.getElementById('chatInput');
       input.value += ` [Attached File: ${fileName}]`;
     }
