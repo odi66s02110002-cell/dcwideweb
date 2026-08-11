@@ -61,7 +61,7 @@
     }
 
     .sidebar {
-      width: 320px;
+      width: 310px;
       background-color: #1e293b;
       border-right: 1px solid #334155;
       display: flex;
@@ -594,18 +594,17 @@
 
     <div class="menu-list">
       <div class="sidebar-section">Active Channels</div>
-      <!-- 群名後方加 (人數)，未讀 Badges 減少至 3, 2, 1 -->
+      <!-- 未讀數字改為 2, 1 -->
       <div class="menu-item active" onclick="switchChannel('cn-merchant-ops', this)">
         <span># 天天电商商家运营群 (28)</span>
-        <span class="badge">3</span>
+        <span class="badge">2</span>
       </div>
       <div class="menu-item" onclick="switchChannel('client-accounts-q3', this)">
         <span># Client accounts q3 (0.8+2) (22)</span>
-        <span class="badge">2</span>
+        <span class="badge">1</span>
       </div>
       <div class="menu-item" onclick="switchChannel('cn-tech-support', this)">
         <span># 华南区技术支持与对接群 (19)</span>
-        <span class="badge">1</span>
       </div>
       <div class="menu-item" onclick="switchChannel('ecom-backend-architecture', this)">
         <span># ecombackend architecture 660613 (12)</span>
@@ -881,11 +880,10 @@
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '03:40 PM', text: '定在凌晨2点发，商家基本没感觉。' },
           { author: 'King', title: 'SAM', color: '#0284c7', time: '03:42 PM', text: '行，群里我已经吼过一嘴公告了。' },
           { author: '張志強 A. Zhang', title: 'Ops', color: '#2563eb', time: '05:00 PM', text: '撤啦撤啦，大家周末快乐！' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '05:02 PM', text: '快乐快乐，周一见！' },
-          { type: 'date', text: 'AUG 10, 2026' },
-          { author: '小婷 Tina Lin', title: 'PM', color: '#ec4899', time: '09:05 AM', text: '今天美城新来的那两家卖家，初始权限模版配好了昂。' },
-          { author: '張志強 A. Zhang', title: 'Ops', color: '#2563eb', time: '09:08 AM', text: 'OK，我让运营小弟去跟进发账号。' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '09:10 AM', text: '收到，我也盯着点。' }
+          { type: 'date', text: 'TODAY' },
+          <!-- 增加 2 句今天剛發的對話，非 King 收尾 -->
+          { author: '張志強 A. Zhang', title: 'Ops', color: '#2563eb', time: '10:02 AM', text: '早！今天联调测试环境跑完后，运维会在中午切一版热更新。' },
+          { author: '小婷 Tina Lin', title: 'PM', color: '#ec4899', time: '10:05 AM', text: '收到，前端组件我已经跟进检查过了，随时可以配合部署。' }
         ];
       } else if (type === 'client-accounts-q3') {
         return [
@@ -905,13 +903,11 @@
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '09:32 AM', text: 'Testing those now with parameters: <div class="code-block">{"gateway": "GCASH", "callback_url": "https://metromart.ph/webhook"}</div>' },
           { type: 'date', text: 'JUL 21, 2026' },
           { author: 'E. Rostova', title: 'Legal', color: '#7c3aed', time: '11:00 AM', text: 'Drafted SLA addendum for SukiShop, check page 4 for uptime terms.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '11:08 AM', text: 'Looks good Elena, sending to client.' },
           { type: 'date', text: 'JUL 25, 2026' },
           { author: 'E. Rostova', title: 'Legal', color: '#7c3aed', time: '02:00 PM', text: 'Apex MSA revision is ready, uploaded here.', file: { name: 'ApexRetail_MSA_JUL2026.pdf', size: '2.1 MB', type: 'PDF' } },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '02:15 PM', text: 'Uptime SLA set to 99.95% right?' },
           { author: 'E. Rostova', title: 'Legal', color: '#7c3aed', time: '02:18 PM', text: 'Yup, all locked in.' },
           { author: 'Vance04', title: 'Fin.', color: '#d97706', time: '02:40 PM', text: 'CloudMart signing this week too? That\'s $140k ARR.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '02:42 PM', text: 'Yeah, final doc is with their legal right now.' },
           { type: 'date', text: 'JUL 29, 2026' },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '05:00 PM', text: 'Mid-quarter numbers look very healthy.' },
           { author: 'Vance04', title: 'Fin.', color: '#d97706', time: '05:10 PM', text: 'Collection cycle reduced to 14 days.' },
@@ -919,17 +915,13 @@
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '10:00 AM', text: 'Heads up: SukiShop load test cleared 18k order sessions!' },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '10:03 AM', text: 'Sweet! Send them the test report excel.', file: { name: 'SukiShop_LoadTest_Aug2026.xlsx', size: '1.2 MB', type: 'XLSX' } },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '11:00 AM', text: 'Quick sync in 10 mins guys, grab coffee.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '11:02 AM', text: 'Joining now!' },
           { type: 'date', text: 'AUG 08, 2026' },
           { author: 'Vance04', title: 'Fin.', color: '#d97706', time: '04:00 PM', text: 'Expenses due tomorrow folks, don\'t slack off.' },
           { author: 'E. Rostova', title: 'Legal', color: '#7c3aed', time: '04:10 PM', text: 'Done & submitted!' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '04:15 PM', text: 'Doing mine as we speak haha.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '04:20 PM', text: 'Classic David 😂' },
-          { type: 'date', text: 'AUG 10, 2026' },
-          { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '09:00 AM', text: 'Payday sale coming up, all systems green?' },
-          { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '09:05 AM', text: 'Order sandbox is 100% good to go.' },
-          { author: 'Vance04', title: 'Fin.', color: '#d97706', time: '09:15 AM', text: 'Deposit invoice cleared by Apex accounting.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '09:28 AM', text: 'Nice, everything looks clean.' }
+          { type: 'date', text: 'TODAY' },
+          { author: 'Jenkins', title: 'VP Sales', color: '#09:50 AM', text: 'Payday sale coming up, all accounts confirmed?' },
+          { author: 'Vance04', title: 'Fin.', color: '#d97706', time: '09:55 AM', text: 'All deposit invoices processed and cleared.' }
         ];
       } else if (type === 'cn-tech-support') {
         return [
@@ -946,7 +938,6 @@
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '05:10 PM', text: '沙盒环境今晚10点做一次微服务补丁升级，预计耗时5分钟。' },
           { type: 'date', text: 'AUG 03, 2026' },
           { author: '小婷 Tina Lin', title: 'PM', color: '#ec4899', time: '11:00 AM', text: '技术支持文档更新了一版，增加了API错误码对照表。', file: { name: '华南API接口错误码手册_v1.2.pdf', size: '1.9 MB', type: 'PDF' } },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '11:05 AM', text: '收到，正好发给新对接的研发团队。' },
           { type: 'date', text: 'AUG 09, 2026' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '04:30 PM', text: '明天凌晨发版，涉及接口微服务，大概停机维护10分钟。' },
           { author: '張志強 A. Zhang', title: 'Ops', color: '#2563eb', time: '04:35 PM', text: '行，邮件通知已发给所有技术负责人。' }
@@ -962,24 +953,20 @@
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '10:00 AM', text: 'Catalog microservice update going live tonight.' },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '10:08 AM', text: 'SukiShop notified?' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '10:12 AM', text: 'Yep! Tested on staging, page load dropped to 0.4s.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '10:15 AM', text: 'Nice, they\'ll be happy with that.' },
           { type: 'date', text: 'JUL 28, 2026' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '03:00 PM', text: 'New UI mockups up.', file: { name: 'Ecom_Admin_UI_v4.pdf', size: '4.1 MB', type: 'PDF' } },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '03:10 PM', text: 'Dark mode looks slick!' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '03:18 PM', text: 'CSV exports handle 50k rows in ~3s now too.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '03:20 PM', text: 'Solid stuff.' },
           { type: 'date', text: 'AUG 01, 2026' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '01:00 PM', text: 'Redis memory allocation tweaked: <div class="code-block">maxmemory 8gb\nmaxmemory-policy allkeys-lru</div>' },
           { type: 'date', text: 'AUG 04, 2026' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '09:30 AM', text: 'Maintenance done at 3 AM. Zero hiccups.' },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '09:40 AM', text: 'Lazada API updated too?' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '09:42 AM', text: 'Auto-refresh token fixed on v3.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '09:48 AM', text: 'Awesome, saves us support tickets.' },
           { type: 'date', text: 'AUG 10, 2026' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '02:00 PM', text: 'PostgreSQL DB indexing wrapped up.' },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '02:15 PM', text: 'Noticeable query boost!' },
-          { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '02:22 PM', text: 'CPU load idling around 12%.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '02:30 PM', text: 'Good job team 👍' }
+          { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '02:22 PM', text: 'CPU load idling around 12%.' }
         ];
       } else if (type === 'payment-gateway-integrations') {
         return [
@@ -989,18 +976,15 @@
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '09:00 AM', text: 'GCash e-wallet webhooks updated.' },
           { author: 'E. Rostova', title: 'Legal', color: '#7c3aed', time: '09:10 AM', text: 'Audit logs saved to vault for BSP compliance.' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '09:30 AM', text: 'Maya QR PH sandbox keys ready.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '09:35 AM', text: 'Forwarded keys to SukiShop dev lead.' },
           { type: 'date', text: 'AUG 01, 2026' },
           { author: 'Vance04', title: 'Fin.', color: '#d97706', time: '11:00 AM', text: 'Gateway rates updated for Q3.', file: { name: 'Payment_Gateway_Addendum_2026.pdf', size: '1.5 MB', type: 'PDF' } },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '11:20 AM', text: 'Enterprise tier rates locked right?' },
           { author: 'Vance04', title: 'Fin.', color: '#d97706', time: '11:30 AM', text: 'Yup, untouched till Q4.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '11:35 AM', text: 'Cool, good to know.' },
           { type: 'date', text: 'AUG 05, 2026' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '01:10 PM', text: 'Added auto-retry logic for timeout transactions.' },
           { type: 'date', text: 'AUG 10, 2026' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '03:00 PM', text: 'Settlement reconciliation script running automatically now.' },
-          { author: 'Vance04', title: 'Fin.', color: '#d97706', time: '03:16 PM', text: 'Huge timesaver for daily accounting!' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '03:28 PM', text: 'Nice automation win.' }
+          { author: 'Vance04', title: 'Fin.', color: '#d97706', time: '03:16 PM', text: 'Huge timesaver for daily accounting!' }
         ];
       } else {
         return [
@@ -1008,11 +992,9 @@
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '09:00 AM', text: 'Morning! Blockers anywhere today?' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '09:10 AM', text: 'All green on tech.' },
           { author: 'E. Rostova', title: 'Legal', color: '#7c3aed', time: '09:20 AM', text: 'Contracts up to date.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '09:22 AM', text: 'Same here, following up with clients.' },
           { type: 'date', text: 'AUG 07, 2026' },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '10:05 AM', text: 'Merchant feedback looking great this week.' },
-          { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '10:15 AM', text: 'Kudos to backend team!' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '10:18 AM', text: 'Nice job guys 👍' }
+          { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '10:15 AM', text: 'Kudos to backend team!' }
         ];
       }
     }
