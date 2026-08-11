@@ -545,7 +545,7 @@
 
   <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
-  <!-- 企業 SSO 假登入遮罩，驗證帳號为 kingsam / 密碼为 12345678 -->
+  <!-- 企業 SSO 假登入遮罩，密碼為 12345678 -->
   <div id="loginOverlay" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:#0f172a; z-index:9999; display:flex; align-items:center; justify-content:center; color:#fff;">
     <div style="background:#1e293b; padding:28px 24px; border-radius:12px; border:1px solid #334155; width:88%; max-width:340px; text-align:center; box-shadow:0 20px 25px -5px rgba(0,0,0,0.5);">
       <h3 style="margin-bottom:6px; color:#38bdf8; font-size:19px;">DCTeamChat</h3>
@@ -564,7 +564,7 @@
       const user = document.getElementById('userInput').value;
       const pass = document.getElementById('passInput').value;
       
-      if(user === 'kingsam' && pass === '12345678') {
+      if(user === 'king' && pass === '12345678') {
         document.getElementById('loginOverlay').style.display = 'none';
       } else {
         document.getElementById('errorMsg').style.display = 'block';
@@ -582,7 +582,7 @@
       <div class="status-online" title="Operational"></div>
     </div>
 
-    <!-- User Profile Badge，顯示暱稱改回 King -->
+    <!-- User Profile Badge -->
     <div class="user-profile-card">
       <div class="user-avatar">King</div>
       <div class="user-info">
@@ -594,54 +594,55 @@
 
     <div class="menu-list">
       <div class="sidebar-section">Active Channels</div>
+      <!-- 群名人數全數減半 -->
       <div class="menu-item active" onclick="switchChannel('cn-merchant-ops', this)">
-        <span># 天天电商商家运营群 (28)</span>
+        <span># 天天电商商家运营群 (14)</span>
         <span class="badge">2</span>
       </div>
       <div class="menu-item" onclick="switchChannel('client-accounts-q3', this)">
-        <span># Client accounts q3 (0.8+2) (22)</span>
+        <span># Client accounts q3 (0.8+2) (11)</span>
         <span class="badge">1</span>
       </div>
       <div class="menu-item" onclick="switchChannel('cn-tech-support', this)">
-        <span># 华南区技术支持与对接群 (19)</span>
+        <span># 华南区技术支持与对接群 (9)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('ecom-backend-architecture', this)">
-        <span># ecombackend architecture 660613 (12)</span>
+        <span># ecombackend architecture 660613 (6)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('payment-gateway-integrations', this)">
-        <span># payment-gateway-integrations (15)</span>
+        <span># payment-gateway-integrations (7)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('oms-inventory-sync', this)">
-        <span># oms-inventory-sync (9)</span>
+        <span># oms-inventory-sync (4)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('sea-merchant-onboarding', this)">
-        <span># 1124 Sea Merchant Onboarding (14)</span>
+        <span># 1124 Sea Merchant Onboarding (7)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('philippines-hq-ops', this)">
-        <span># philippines-hq-ops PP (35)</span>
+        <span># philippines-hq-ops PP (17)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('crossborder-logistics-api', this)">
-        <span># crossborder-logistics-api 【VG】 (18)</span>
+        <span># crossborder-logistics-api 【VG】 (9)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('vip-merchant-desk', this)">
-        <span># VIP-MERCHANT-DESK (8)</span>
+        <span># VIP-MERCHANT-DESK (4)</span>
       </div>
 
       <div class="sidebar-section">Archived Channels</div>
       <div class="menu-item" onclick="switchChannel('empty-channel-1', this)">
-        <span># devops-ci-cd-pipeline (6)</span>
+        <span># devops-ci-cd-pipeline (3)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('empty-channel-2', this)">
-        <span># 2025-q4-strategy (10)</span>
+        <span># 2025-q4-strategy (5)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('empty-channel-3', this)">
-        <span># internal-hackathon (25)</span>
+        <span># internal-hackathon (12)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('empty-channel-4', this)">
-        <span># legal-compliance-archive (5)</span>
+        <span># legal-compliance-archive (2)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('empty-channel-5', this)">
-        <span># merchant-promotions-lab (11)</span>
+        <span># merchant-promotions-lab (5)</span>
       </div>
 
       <div class="sidebar-section">Direct Messages</div>
@@ -708,7 +709,7 @@
   <div class="chat-area">
     <div class="chat-header">
       <div class="channel-info">
-        <h2 id="channelTitle"># 天天电商商家运营群 (28)</h2>
+        <h2 id="channelTitle"># 天天电商商家运营群 (14)</h2>
         <p id="channelDesc">美城与东南亚跨区域商家后台对接、API参数联调与运营讨论</p>
       </div>
       <div class="header-actions">
@@ -745,60 +746,60 @@
 
     const channelData = {
       'cn-merchant-ops': {
-        title: '# 天天电商商家运营群 (28)',
+        title: '# 天天电商商家运营群 (14)',
         desc: '美城与东南亚跨区域商家后台对接、API参数联调与运营讨论',
         messages: generateChatMessages('cn-merchant-ops')
       },
       'client-accounts-q3': {
-        title: '# Client accounts q3 (0.8+2) (22)',
+        title: '# Client accounts q3 (0.8+2) (11)',
         desc: 'Enterprise E-commerce Merchant Portfolio & Account Discussions',
         messages: generateChatMessages('client-accounts-q3')
       },
       'cn-tech-support': {
-        title: '# 华南区技术支持与对接群 (19)',
+        title: '# 华南区技术支持与对接群 (9)',
         desc: '华南商家后台接口排错、系统升级与对接答疑',
         messages: generateChatMessages('cn-tech-support')
       },
       'ecom-backend-architecture': {
-        title: '# ecombackend architecture 660613 (12)',
+        title: '# ecombackend architecture 660613 (6)',
         desc: 'Custom Merchant Admin Panels, Microservices & Core Order Engine',
         messages: generateChatMessages('ecom-backend-architecture')
       },
       'payment-gateway-integrations': {
-        title: '# payment-gateway-integrations (15)',
+        title: '# payment-gateway-integrations (7)',
         desc: 'GCash, Maya, Credit Cards & Regional Webhooks',
         messages: generateChatMessages('payment-gateway-integrations')
       },
       'oms-inventory-sync': {
-        title: '# oms-inventory-sync (9)',
+        title: '# oms-inventory-sync (4)',
         desc: 'Real-time Stock Control, Multi-Warehouse & 3PL Logistics APIs',
         messages: generateChatMessages('oms-inventory-sync')
       },
       'sea-merchant-onboarding': {
-        title: '# 1124 Sea Merchant Onboarding (14)',
+        title: '# 1124 Sea Merchant Onboarding (7)',
         desc: 'New Enterprise Seller Setup & Custom Back-Office Training',
         messages: generateChatMessages('sea-merchant-onboarding')
       },
       'philippines-hq-ops': {
-        title: '# philippines-hq-ops PP (35)',
+        title: '# philippines-hq-ops PP (17)',
         desc: 'Makati Office Facilities, HR & Admin Support',
         messages: generateChatMessages('philippines-hq-ops')
       },
       'crossborder-logistics-api': {
-        title: '# crossborder-logistics-api 【VG】 (18)',
+        title: '# crossborder-logistics-api 【VG】 (9)',
         desc: 'Custom Fulfillment Hooks, Customs Clearance & Freight Tracker',
         messages: generateChatMessages('crossborder-logistics-api')
       },
       'vip-merchant-desk': {
-        title: '# VIP-MERCHANT-DESK (8)',
+        title: '# VIP-MERCHANT-DESK (4)',
         desc: 'Tier-1 High Volume Sellers Technical Support & Priority Esculations',
         messages: generateChatMessages('vip-merchant-desk')
       },
-      'empty-channel-1': { title: '# devops-ci-cd-pipeline (6)', desc: 'Deployment pipelines', messages: [] },
-      'empty-channel-2': { title: '# 2025-q4-strategy (10)', desc: 'Q4 strategic roadmap', messages: [] },
-      'empty-channel-3': { title: '# internal-hackathon (25)', desc: 'Project submissions', messages: [] },
-      'empty-channel-4': { title: '# legal-compliance-archive (5)', desc: 'Archived NDAs', messages: [] },
-      'empty-channel-5': { title: '# merchant-promotions-lab (11)', desc: 'Campaign tests', messages: [] },
+      'empty-channel-1': { title: '# devops-ci-cd-pipeline (3)', desc: 'Deployment pipelines', messages: [] },
+      'empty-channel-2': { title: '# 2025-q4-strategy (5)', desc: 'Q4 strategic roadmap', messages: [] },
+      'empty-channel-3': { title: '# internal-hackathon (12)', desc: 'Project submissions', messages: [] },
+      'empty-channel-4': { title: '# legal-compliance-archive (2)', desc: 'Archived NDAs', messages: [] },
+      'empty-channel-5': { title: '# merchant-promotions-lab (5)', desc: 'Campaign tests', messages: [] },
       'dm-jenkins': {
         title: '🔒 Direct Message with Jenkins',
         desc: 'VP Sales • Direct Channel',
@@ -843,7 +844,6 @@
           { type: 'date', text: 'JUL 10, 2026' },
           { author: '張志強 A. Zhang', title: 'Ops', color: '#2563eb', time: '02:00 PM', text: '天天电商这个月要拉5个新大卖进来，后台环境调好了没？' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '02:05 PM', text: '集群已经扩容了，随时能分配隔离租户。' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '02:08 PM', text: '我已经跟其中两家对接完首期需求了，今晚把权限规则表发出来。' },
           { author: '小婷 Tina Lin', title: 'PM', color: '#ec4899', time: '02:10 PM', text: '后台权限模版我也更新了，支持批量导入主子账号。' },
           { type: 'date', text: 'JUL 12, 2026' },
           { author: '張志強 A. Zhang', title: 'Ops', color: '#2563eb', time: '03:10 PM', text: '美城跨区对接的API通道这周打算全切新版，大家注意下 payload 格式。' },
@@ -857,7 +857,6 @@
           { author: 'King', title: 'SAM', color: '#0284c7', time: '09:48 AM', text: '赞，对方技术赞不绝口，说准备把剩下几个店也切过来。' },
           { type: 'date', text: 'JUL 20, 2026' },
           { author: '大衛 David Wang', title: 'BI', color: '#f59e0b', time: '11:15 AM', text: '周报数据统计好了，天天电商这块订单量环比翻了一番。' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '11:18 AM', text: '我看过报表了，华南商家的占比提升很大，可以作为典型案例。' },
           { author: '張志強 A. Zhang', title: 'Ops', color: '#2563eb', time: '11:20 AM', text: '挺好，说明新版微服务架构没白改。' },
           { type: 'date', text: 'JUL 22, 2026' },
           { author: '玲 May Chen~', title: 'Design', color: '#8b5cf6', time: '02:15 PM', text: '暗黑模式改好一版，大家瞅瞅感觉对不对。', file: { name: '美城商家后台_UI界面规范_v2.pdf', size: '3.6 MB', type: 'PDF' } },
@@ -903,13 +902,11 @@
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '09:32 AM', text: 'Testing those now with parameters: <div class="code-block">{"gateway": "GCASH", "callback_url": "https://metromart.ph/webhook"}</div>' },
           { type: 'date', text: 'JUL 21, 2026' },
           { author: 'E. Rostova', title: 'Legal', color: '#7c3aed', time: '11:00 AM', text: 'Drafted SLA addendum for SukiShop, check page 4 for uptime terms.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '11:08 AM', text: 'Looks good Elena, sending to client.' },
           { type: 'date', text: 'JUL 25, 2026' },
           { author: 'E. Rostova', title: 'Legal', color: '#7c3aed', time: '02:00 PM', text: 'Apex MSA revision is ready, uploaded here.', file: { name: 'ApexRetail_MSA_JUL2026.pdf', size: '2.1 MB', type: 'PDF' } },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '02:15 PM', text: 'Uptime SLA set to 99.95% right?' },
           { author: 'E. Rostova', title: 'Legal', color: '#7c3aed', time: '02:18 PM', text: 'Yup, all locked in.' },
           { author: 'Vance04', title: 'Fin.', color: '#d97706', time: '02:40 PM', text: 'CloudMart signing this week too? That\'s $140k ARR.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '02:42 PM', text: 'Yeah, final doc is with their legal right now.' },
           { type: 'date', text: 'JUL 29, 2026' },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '05:00 PM', text: 'Mid-quarter numbers look very healthy.' },
           { author: 'Vance04', title: 'Fin.', color: '#d97706', time: '05:10 PM', text: 'Collection cycle reduced to 14 days.' },
@@ -917,12 +914,10 @@
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '10:00 AM', text: 'Heads up: SukiShop load test cleared 18k order sessions!' },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '10:03 AM', text: 'Sweet! Send them the test report excel.', file: { name: 'SukiShop_LoadTest_Aug2026.xlsx', size: '1.2 MB', type: 'XLSX' } },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '11:00 AM', text: 'Quick sync in 10 mins guys, grab coffee.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '11:02 AM', text: 'Joining now!' },
           { type: 'date', text: 'AUG 08, 2026' },
           { author: 'Vance04', title: 'Fin.', color: '#d97706', time: '04:00 PM', text: 'Expenses due tomorrow folks, don\'t slack off.' },
           { author: 'E. Rostova', title: 'Legal', color: '#7c3aed', time: '04:10 PM', text: 'Done & submitted!' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '04:15 PM', text: 'Doing mine as we speak haha.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '04:20 PM', text: 'Classic David 😂' },
           { type: 'date', text: 'TODAY' },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '09:50 AM', text: 'Payday sale coming up, all accounts confirmed?' },
           { author: 'Vance04', title: 'Fin.', color: '#d97706', time: '09:55 AM', text: 'All deposit invoices processed and cleared.' }
@@ -942,7 +937,6 @@
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '05:10 PM', text: '沙盒环境今晚10点做一次微服务补丁升级，预计耗时5分钟。' },
           { type: 'date', text: 'AUG 03, 2026' },
           { author: '小婷 Tina Lin', title: 'PM', color: '#ec4899', time: '11:00 AM', text: '技术支持文档更新了一版，增加了API错误码对照表。', file: { name: '华南API接口错误码手册_v1.2.pdf', size: '1.9 MB', type: 'PDF' } },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '11:05 AM', text: '收到，正好发给新对接的研发团队。' },
           { type: 'date', text: 'AUG 09, 2026' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '04:30 PM', text: '明天凌晨发版，涉及接口微服务，大概停机维护10分钟。' },
           { author: '張志強 A. Zhang', title: 'Ops', color: '#2563eb', time: '04:35 PM', text: '行，邮件通知已发给所有技术负责人。' }
@@ -958,19 +952,16 @@
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '10:00 AM', text: 'Catalog microservice update going live tonight.' },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '10:08 AM', text: 'SukiShop notified?' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '10:12 AM', text: 'Yep! Tested on staging, page load dropped to 0.4s.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '10:15 AM', text: 'Nice, they\'ll be happy with that.' },
           { type: 'date', text: 'JUL 28, 2026' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '03:00 PM', text: 'New UI mockups up.', file: { name: 'Ecom_Admin_UI_v4.pdf', size: '4.1 MB', type: 'PDF' } },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '03:10 PM', text: 'Dark mode looks slick!' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '03:18 PM', text: 'CSV exports handle 50k rows in ~3s now too.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '03:20 PM', text: 'Solid stuff.' },
           { type: 'date', text: 'AUG 01, 2026' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '01:00 PM', text: 'Redis memory allocation tweaked: <div class="code-block">maxmemory 8gb\nmaxmemory-policy allkeys-lru</div>' },
           { type: 'date', text: 'AUG 04, 2026' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '09:30 AM', text: 'Maintenance done at 3 AM. Zero hiccups.' },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '09:40 AM', text: 'Lazada API updated too?' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '09:42 AM', text: 'Auto-refresh token fixed on v3.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '09:48 AM', text: 'Awesome, saves us support tickets.' },
           { type: 'date', text: 'AUG 10, 2026' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '02:00 PM', text: 'PostgreSQL DB indexing wrapped up.' },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '02:15 PM', text: 'Noticeable query boost!' },
@@ -984,12 +975,10 @@
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '09:00 AM', text: 'GCash e-wallet webhooks updated.' },
           { author: 'E. Rostova', title: 'Legal', color: '#7c3aed', time: '09:10 AM', text: 'Audit logs saved to vault for BSP compliance.' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '09:30 AM', text: 'Maya QR PH sandbox keys ready.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '09:35 AM', text: 'Forwarded keys to SukiShop dev lead.' },
           { type: 'date', text: 'AUG 01, 2026' },
           { author: 'Vance04', title: 'Fin.', color: '#d97706', time: '11:00 AM', text: 'Gateway rates updated for Q3.', file: { name: 'Payment_Gateway_Addendum_2026.pdf', size: '1.5 MB', type: 'PDF' } },
           { author: 'Jenkins', title: 'VP Sales', color: '#0284c7', time: '11:20 AM', text: 'Enterprise tier rates locked right?' },
           { author: 'Vance04', title: 'Fin.', color: '#d97706', time: '11:30 AM', text: 'Yup, untouched till Q4.' },
-          { author: 'King', title: 'SAM', color: '#0284c7', time: '11:35 AM', text: 'Cool, good to know.' },
           { type: 'date', text: 'AUG 05, 2026' },
           { author: 'D. Chen', title: 'Lead Arch.', color: '#059669', time: '01:10 PM', text: 'Added auto-retry logic for timeout transactions.' },
           { type: 'date', text: 'AUG 10, 2026' },
