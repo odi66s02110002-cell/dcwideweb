@@ -61,7 +61,7 @@
     }
 
     .sidebar {
-      width: 310px;
+      width: 320px;
       background-color: #1e293b;
       border-right: 1px solid #334155;
       display: flex;
@@ -545,7 +545,7 @@
 
   <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
-  <!-- 企業 SSO 假登入遮罩，密碼改為 12345678 -->
+  <!-- 企業 SSO 假登入遮罩，密碼為 12345678 -->
   <div id="loginOverlay" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:#0f172a; z-index:9999; display:flex; align-items:center; justify-content:center; color:#fff;">
     <div style="background:#1e293b; padding:28px 24px; border-radius:12px; border:1px solid #334155; width:88%; max-width:340px; text-align:center; box-shadow:0 20px 25px -5px rgba(0,0,0,0.5);">
       <h3 style="margin-bottom:6px; color:#38bdf8; font-size:19px;">DCTeamChat</h3>
@@ -564,7 +564,6 @@
       const user = document.getElementById('userInput').value;
       const pass = document.getElementById('passInput').value;
       
-      // 密碼改為 12345678
       if(user === 'king' && pass === '12345678') {
         document.getElementById('loginOverlay').style.display = 'none';
       } else {
@@ -595,59 +594,56 @@
 
     <div class="menu-list">
       <div class="sidebar-section">Active Channels</div>
+      <!-- 群名後方加 (人數)，未讀 Badges 減少至 3, 2, 1 -->
       <div class="menu-item active" onclick="switchChannel('cn-merchant-ops', this)">
-        <span># 天天电商商家运营群</span>
-        <span class="badge">28</span>
+        <span># 天天电商商家运营群 (28)</span>
+        <span class="badge">3</span>
       </div>
       <div class="menu-item" onclick="switchChannel('client-accounts-q3', this)">
-        <span># Client accounts q3 (0.8+2)</span>
-        <span class="badge">22</span>
+        <span># Client accounts q3 (0.8+2) (22)</span>
+        <span class="badge">2</span>
       </div>
-      <!-- 华南区技术支持与对接群 放在第3位 -->
       <div class="menu-item" onclick="switchChannel('cn-tech-support', this)">
-        <span># 华南区技术支持与对接群</span>
-        <span class="badge">19</span>
+        <span># 华南区技术支持与对接群 (19)</span>
+        <span class="badge">1</span>
       </div>
-      <!-- 更名: ecombackend architecture 20260613 -->
       <div class="menu-item" onclick="switchChannel('ecom-backend-architecture', this)">
-        <span># ecombackend architecture 20260613</span>
-        <span class="badge">16</span>
+        <span># ecombackend architecture 660613 (12)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('payment-gateway-integrations', this)">
-        <span># payment-gateway-integrations</span>
-        <span class="badge">14</span>
+        <span># payment-gateway-integrations (15)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('oms-inventory-sync', this)">
-        <span># oms-inventory-sync</span>
+        <span># oms-inventory-sync (9)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('sea-merchant-onboarding', this)">
-        <span># 1124 Sea Merchant Onboarding</span>
+        <span># 1124 Sea Merchant Onboarding (14)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('philippines-hq-ops', this)">
-        <span># philippines-hq-ops PP</span>
+        <span># philippines-hq-ops PP (35)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('crossborder-logistics-api', this)">
-        <span># crossborder-logistics-api 【VG】</span>
+        <span># crossborder-logistics-api 【VG】 (18)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('vip-merchant-desk', this)">
-        <span># VIP-MERCHANT-DESK</span>
+        <span># VIP-MERCHANT-DESK (8)</span>
       </div>
 
       <div class="sidebar-section">Archived Channels</div>
       <div class="menu-item" onclick="switchChannel('empty-channel-1', this)">
-        <span># devops-ci-cd-pipeline</span>
+        <span># devops-ci-cd-pipeline (6)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('empty-channel-2', this)">
-        <span># 2025-q4-strategy</span>
+        <span># 2025-q4-strategy (10)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('empty-channel-3', this)">
-        <span># internal-hackathon</span>
+        <span># internal-hackathon (25)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('empty-channel-4', this)">
-        <span># legal-compliance-archive</span>
+        <span># legal-compliance-archive (5)</span>
       </div>
       <div class="menu-item" onclick="switchChannel('empty-channel-5', this)">
-        <span># merchant-promotions-lab</span>
+        <span># merchant-promotions-lab (11)</span>
       </div>
 
       <div class="sidebar-section">Direct Messages</div>
@@ -714,7 +710,7 @@
   <div class="chat-area">
     <div class="chat-header">
       <div class="channel-info">
-        <h2 id="channelTitle"># 天天电商商家运营群</h2>
+        <h2 id="channelTitle"># 天天电商商家运营群 (28)</h2>
         <p id="channelDesc">美城与东南亚跨区域商家后台对接、API参数联调与运营讨论</p>
       </div>
       <div class="header-actions">
@@ -751,60 +747,60 @@
 
     const channelData = {
       'cn-merchant-ops': {
-        title: '# 天天电商商家运营群',
+        title: '# 天天电商商家运营群 (28)',
         desc: '美城与东南亚跨区域商家后台对接、API参数联调与运营讨论',
         messages: generateChatMessages('cn-merchant-ops')
       },
-      'cn-tech-support': {
-        title: '# 华南区技术支持与对接群',
-        desc: '华南商家后台接口排错、系统升级与对接答疑',
-        messages: generateChatMessages('cn-tech-support')
-      },
       'client-accounts-q3': {
-        title: '# Client accounts q3 (0.8+2)',
+        title: '# Client accounts q3 (0.8+2) (22)',
         desc: 'Enterprise E-commerce Merchant Portfolio & Account Discussions',
         messages: generateChatMessages('client-accounts-q3')
       },
+      'cn-tech-support': {
+        title: '# 华南区技术支持与对接群 (19)',
+        desc: '华南商家后台接口排错、系统升级与对接答疑',
+        messages: generateChatMessages('cn-tech-support')
+      },
       'ecom-backend-architecture': {
-        title: '# ecombackend architecture 20260613',
+        title: '# ecombackend architecture 660613 (12)',
         desc: 'Custom Merchant Admin Panels, Microservices & Core Order Engine',
         messages: generateChatMessages('ecom-backend-architecture')
       },
       'payment-gateway-integrations': {
-        title: '# payment-gateway-integrations',
+        title: '# payment-gateway-integrations (15)',
         desc: 'GCash, Maya, Credit Cards & Regional Webhooks',
         messages: generateChatMessages('payment-gateway-integrations')
       },
       'oms-inventory-sync': {
-        title: '# oms-inventory-sync',
+        title: '# oms-inventory-sync (9)',
         desc: 'Real-time Stock Control, Multi-Warehouse & 3PL Logistics APIs',
         messages: generateChatMessages('oms-inventory-sync')
       },
       'sea-merchant-onboarding': {
-        title: '# 1124 Sea Merchant Onboarding',
+        title: '# 1124 Sea Merchant Onboarding (14)',
         desc: 'New Enterprise Seller Setup & Custom Back-Office Training',
         messages: generateChatMessages('sea-merchant-onboarding')
       },
       'philippines-hq-ops': {
-        title: '# philippines-hq-ops PP',
+        title: '# philippines-hq-ops PP (35)',
         desc: 'Makati Office Facilities, HR & Admin Support',
         messages: generateChatMessages('philippines-hq-ops')
       },
       'crossborder-logistics-api': {
-        title: '# crossborder-logistics-api 【VG】',
+        title: '# crossborder-logistics-api 【VG】 (18)',
         desc: 'Custom Fulfillment Hooks, Customs Clearance & Freight Tracker',
         messages: generateChatMessages('crossborder-logistics-api')
       },
       'vip-merchant-desk': {
-        title: '# VIP-MERCHANT-DESK',
+        title: '# VIP-MERCHANT-DESK (8)',
         desc: 'Tier-1 High Volume Sellers Technical Support & Priority Esculations',
         messages: generateChatMessages('vip-merchant-desk')
       },
-      'empty-channel-1': { title: '# devops-ci-cd-pipeline', desc: 'Deployment pipelines', messages: [] },
-      'empty-channel-2': { title: '# 2025-q4-strategy', desc: 'Q4 strategic roadmap', messages: [] },
-      'empty-channel-3': { title: '# internal-hackathon', desc: 'Project submissions', messages: [] },
-      'empty-channel-4': { title: '# legal-compliance-archive', desc: 'Archived NDAs', messages: [] },
-      'empty-channel-5': { title: '# merchant-promotions-lab', desc: 'Campaign tests', messages: [] },
+      'empty-channel-1': { title: '# devops-ci-cd-pipeline (6)', desc: 'Deployment pipelines', messages: [] },
+      'empty-channel-2': { title: '# 2025-q4-strategy (10)', desc: 'Q4 strategic roadmap', messages: [] },
+      'empty-channel-3': { title: '# internal-hackathon (25)', desc: 'Project submissions', messages: [] },
+      'empty-channel-4': { title: '# legal-compliance-archive (5)', desc: 'Archived NDAs', messages: [] },
+      'empty-channel-5': { title: '# merchant-promotions-lab (11)', desc: 'Campaign tests', messages: [] },
       'dm-jenkins': {
         title: '🔒 Direct Message with Jenkins',
         desc: 'VP Sales • Direct Channel',
